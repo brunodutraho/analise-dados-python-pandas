@@ -1,124 +1,134 @@
-📌 Estrutura atual do projeto (para referência)
+# 📊 Análise de Dados com Python & Pandas
 
+Repositório dedicado ao meu **desenvolvimento prático e progressivo em Análise de Dados**, utilizando **Python, Pandas, visualização de dados, estatística aplicada, Streamlit e integração com bancos de dados**.
+
+Este projeto faz parte da minha **transição e consolidação profissional como Analista de Dados**, com foco em **boas práticas, organização de código, análise exploratória e geração de insights**.
+
+---
+
+## 🎯 Objetivo do Repositório
+
+- Consolidar fundamentos e práticas de **Análise de Dados com Python**
+- Aplicar **Pandas** em cenários reais e progressivos
+- Desenvolver **pensamento analítico e estatístico**
+- Criar **dashboards e análises interativas**
+- Demonstrar evolução técnica de forma clara e organizada
+- Servir como **portfólio técnico** para oportunidades em Dados
+
+---
+
+## 🧠 Tecnologias e Ferramentas
+
+- **Python**
+- **Pandas**
+- **NumPy**
+- **Matplotlib / Seaborn / Plotly**
+- **Streamlit**
+- **SQL / SQLAlchemy**
+- **Jupyter Notebook**
+- **Git & GitHub**
+
+---
+
+## 📂 Estrutura do Repositório
 ````
 analise-dados-python-pandas/
 │
-├─ .venv/                  # ambiente virtual (não versionado)
 ├─ seccao-1-pandas-hands-on/
-│   └─ 1-series.ipynb
-├─ README.md
-└─ requirements.txt
-
-````
-
-📂 Estrutura do repositório
-````
-analise-dados-python-pandas/
-│
-├─ seccao-1-pandas-hands-on/
-│   ├─ 1-series.ipynb
-│   ├─ 2-dataframe.ipynb
-│   ├─ 3-analisando-dataframe.ipynb
-│   ├─ 4-operacoes-dataframe.ipynb
-│   ├─ 5-importando-csv.ipynb
-│   ├─ 6-analise-csv.ipynb
-│   ├─ 7-criando-planilha.ipynb
-│   ├─ 8-analise-planilha.ipynb
-│   ├─ 9-json.ipynb
-│   ├─ 10-analise-json.ipynb
-│   ├─ 11-exporta-csv-banco.ipynb
-│   ├─ 12-sql-insights.ipynb
-│   ├─ mini-projeto-2-parte1.ipynb
-│   ├─ mini-projeto-2-parte2.ipynb
-│   └─ mini-projeto-2-parte3.ipynb
-│
 ├─ seccao-2-pandas-transformacao/
-│   ├─ 1-importando-dados.ipynb
-│   ├─ 2-transformando-numericos.ipynb
-│   ├─ 3-transformando-numericos2.ipynb
-│   ├─ 4-transformando-textuais.ipynb
-│   └─ 5-transformando-textuais2.ipynb
-│
 ├─ seccao-3-estatistica-aplicada/
-│   ├─ 1-conceitos-iniciais.ipynb
-│   ├─ 2-definindo-dados.ipynb
-│   ├─ 3-medidas-posicao.ipynb
-│   ├─ 4-medidas-dispersao.ipynb
-│   ├─ 5-medidas-forma.ipynb
-│   ├─ 6-correlacao.ipynb
-│   ├─ 7-graficos-basicos.ipynb
-│   ├─ 8-histogram-boxplot-scatter.ipynb
-│   ├─ 9-grafico-barras.ipynb
-│   └─ 10-grafico-linhas.ipynb
-│
 ├─ seccao-4-analise-exploratoria/
-│   ├─ 1-importando-dados.ipynb
-│   ├─ 2-preparando-dados.ipynb
-│   ├─ 3-unindo-dataframes.ipynb
-│   ├─ 4-tratando-valores-ausentes.ipynb
-│   ├─ 5-distribuicao-categoricas.ipynb
-│   ├─ 6-distribuicao-numericas.ipynb
-│   ├─ 7-filtros-agrupamento.ipynb
-│   ├─ 8-tabelas-contingencia.ipynb
-│   ├─ 9-qui-quadrado.ipynb
-│   ├─ 10-correlacao-variaveis.ipynb
-│   ├─ 11-tratando-outliers.ipynb
-│   └─ 12-eda-automatizado.ipynb
-│
 ├─ seccao-5-dataviz-fundamentos/
-│   ├─ 1-matplotlib.ipynb
-│   ├─ 2-grafico-linha.ipynb
-│   ├─ 3-grafico-barra.ipynb
-│   ├─ 4-grafico-dispersao.ipynb
-│   ├─ 5-histogramas.ipynb
-│   ├─ 6-insights-dataset1.ipynb
-│   ├─ 7-insights-dataset2.ipynb
-│   ├─ 8-fig-subplot.ipynb
-│   ├─ 9-reunindo-graficos.ipynb
-│   ├─ 10-seaborn.ipynb
-│   ├─ 11-heatmap.ipynb
-│   ├─ 12-pairplot.ipynb
-│   ├─ 13-violinplot.ipynb
-│   ├─ 14-plotly.ipynb
-│   ├─ 15-graficos-interativos1.ipynb
-│   ├─ 16-graficos-interativos2.ipynb
-│   ├─ 17-folium.ipynb
-│   └─ 18-mapas.ipynb
-│
 ├─ seccao-6-streamlit-mini-projeto-3/
-│   ├─ 1-ambiente-virtual.ipynb
-│   ├─ 2-importando-dataset.ipynb
-│   ├─ 3-estruturando-dashboard.ipynb
-│   ├─ 4-criando-metricas.ipynb
-│   ├─ 5-tabela-receitas-estado.ipynb
-│   ├─ 6-grafico-receitas-estado.ipynb
-│   ├─ 7-tabela-receita-mensal.ipynb
-│   ├─ 8-grafico-receita-mensal.ipynb
-│   ├─ 9-receitas-estado-bar.ipynb
-│   ├─ 10-receitas-categoria.ipynb
-│   ├─ 11-receitas-vendedores.ipynb
-│   ├─ 12-quantidade-vendas-vendedores.ipynb
-│   ├─ 13-adicionando-filtros.ipynb
-│   ├─ 14-adicionando-pagina-dataset.ipynb
-│   ├─ 15-filtrando-colunas-linhas.ipynb
-│   ├─ 16-filtrando-colunas-linhas2.ipynb
-│   ├─ 17-download-dataset.ipynb
-│   ├─ 18-preparando-aplicacao.ipynb
-│   ├─ 19-versionando-aplicacao.ipynb
-│   └─ 20-deploy.ipynb
-│
 ├─ seccao-7-integracao-banco-dados/
-│   ├─ 1-criando-banco-tabela.ipynb
-│   ├─ 2-inserindo-lendo-dados.ipynb
-│   ├─ 3-atualizando-excluindo.ipynb
-│   ├─ 4-aplicacao-web.ipynb
-│   ├─ 5-sqlalchemy.ipynb
-│   ├─ 6-aplicacao-desktop.ipynb
-│   ├─ 7-postgresql-lendo-inserindo.ipynb
-│   ├─ 8-postgresql-atualizando-excluindo.ipynb
-│   ├─ 9-mongodb-lendo-inserindo.ipynb
-│   └─ 10-mongodb-atualizando-excluindo.ipynb
 │
 ├─ .gitignore
+├─ requirements.txt
 └─ README.md
 ````
+
+---
+
+## ✅ Seção 1 — Pandas Hands-on (CONCLUÍDA)
+
+Nesta seção, foram desenvolvidos **exercícios práticos e um mini projeto completo**, cobrindo desde os fundamentos até análises interativas com Streamlit.
+
+### 🔹 Conteúdos abordados
+- Series e DataFrames
+- Leitura e escrita de CSV, Excel e JSON
+- Análise e exploração de dados
+- Filtros, seleções e agregações
+- Integração entre múltiplas tabelas
+- Métricas e indicadores
+- Tabela dinâmica com Pandas
+- Aplicações interativas com Streamlit
+
+---
+
+### 🧪 Mini Projeto – Aplicação Analítica com Streamlit
+
+A Seção 1 culmina em um **mini projeto prático**, com geração de dados simulados e dashboards interativos.
+
+#### Funcionalidades desenvolvidas:
+
+##### 📄 1. Visualização da Base de Dados
+![Visualização da Tabela](seccao-1-pandas-hands-on/assets/gifs/1-visualizacao_tb.gif)
+
+##### 🎛️ 2. Seleção Dinâmica de Colunas e Filtros
+![Seleção de Colunas](seccao-1-pandas-hands-on/assets/gifs/2-selecionando_colunas.gif)
+
+##### ➕ 3. Adição de Novas Compras
+![Adicionando Linhas](seccao-1-pandas-hands-on/assets/gifs/3-adicionando_linhas.gif)
+
+##### 📈 4. Métricas e Volume de Dados
+![Volume de Dados](seccao-1-pandas-hands-on/assets/gifs/4-volume_dados.gif)
+
+##### 📊 5. Tabela Dinâmica Interativa
+![Tabela Dinâmica](seccao-1-pandas-hands-on/assets/gifs/5-tb_dinamica.gif)
+
+---
+
+## 🔄 Seção 2 — Pandas: Transformação de Dados (EM ANDAMENTO)
+
+Nesta seção o foco é **limpeza, padronização e transformação de dados**, incluindo:
+
+- Transformações numéricas
+- Tratamento de dados textuais
+- Padronização de valores
+- Preparação de dados para análise e modelagem
+- Boas práticas de pré-processamento
+
+> 🔧 *Seção atualmente em desenvolvimento.*
+
+---
+
+## 📚 Próximas Seções (Roadmap)
+
+- 📐 **Estatística Aplicada**
+- 🔎 **Análise Exploratória de Dados (EDA)**
+- 📊 **Visualização de Dados**
+- 🌐 **Dashboards com Streamlit**
+- 🗄️ **Integração com Bancos de Dados (SQL, PostgreSQL, MongoDB)**
+
+---
+
+## 🧩 Organização e Boas Práticas
+
+- Código organizado por **seções temáticas**
+- Commits semânticos e progressivos
+- Separação clara entre dados, scripts e análises
+- Uso de **Pathlib** para portabilidade
+- Padronização de encoding (`utf-8`)
+- Formatação monetária e visual adequada
+
+---
+
+## 🚀 Considerações Finais
+
+Este repositório representa minha **evolução prática em Análise de Dados**, indo além de exemplos isolados e focando em **aplicação real, organização e clareza analítica**.
+
+Ele será continuamente atualizado conforme avanço nos estudos e projetos.
+
+---
+
+📌 *Repositório em constante evolução — cada seção representa um novo nível de maturidade técnica.*
