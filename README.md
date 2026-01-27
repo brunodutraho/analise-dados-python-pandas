@@ -88,17 +88,45 @@ A Seção 1 culmina em um **mini projeto prático**, com geração de dados simu
 
 ---
 
-## 🔄 Seção 2 — Pandas: Transformação de Dados (EM ANDAMENTO)
+## 🔄 Seção 2 — Pandas: Transformação de Dados (CONCLUÍDA)
 
-Nesta seção o foco é **limpeza, padronização e transformação de dados**, incluindo:
+Nesta seção o foco foi **limpeza, padronização e transformação de dados**, simulando problemas reais encontrados em bases de dados do dia a dia.
 
-- Transformações numéricas
-- Tratamento de dados textuais
-- Padronização de valores
+### 🔹 Conteúdos abordados
+- Normalização de dados semi-estruturados (JSON)
+- Conversão e padronização de dados numéricos
+- Limpeza e tratamento de dados textuais
 - Preparação de dados para análise e modelagem
-- Boas práticas de pré-processamento
+- Boas práticas de pré-processamento com Pandas
 
-> 🔧 *Seção atualmente em desenvolvimento.*
+---
+
+### 🔧 Principais Transformações Desenvolvidas
+
+#### 📦 Normalização de dados JSON
+Transformação de estruturas aninhadas em colunas tabulares, facilitando análise e exploração.
+
+![Normalização JSON](seccao-2-pandas-transformacao-dados/gifs/normalizacao_json.gif)
+
+---
+
+#### 🔢 Conversão de dados numéricos
+Tratamento de valores monetários armazenados como texto, remoção de símbolos e conversão para tipos numéricos adequados.
+
+![Conversão Numérica](seccao-2-pandas-transformacao-dados/gifs/conversao_numerica.gif)
+
+---
+
+#### 🧹 Limpeza e padronização textual
+Remoção de caracteres especiais, padronização de espaços e preparação de campos textuais para análise.
+
+![Limpeza Textual](seccao-2-pandas-transformacao-dados/gifs/limpeza_textual.gif)
+
+---
+
+## ⏳ Seção 3 — Estatística Aplicada (EM ANDAMENTO)
+
+Seção em desenvolvimento, com foco em fundamentos estatísticos aplicados à análise de dados.
 
 ---
 
@@ -119,7 +147,7 @@ Nesta seção o foco é **limpeza, padronização e transformação de dados**, 
 - Separação clara entre dados, scripts e análises
 - Uso de **Pathlib** para portabilidade
 - Padronização de encoding (`utf-8`)
-- Formatação monetária e visual adequada
+- Tratamento consistente de dados numéricos e textuais
 
 ---
 
