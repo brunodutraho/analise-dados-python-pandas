@@ -124,9 +124,30 @@ Remoção de caracteres especiais, padronização de espaços e preparação de 
 
 ---
 
-## ⏳ Seção 3 — Estatística Aplicada (EM ANDAMENTO)
+## 📐 Seção 3 — Estatística Aplicada (CONCLUÍDA)
 
-Seção em desenvolvimento, com foco em fundamentos estatísticos aplicados à análise de dados.
+Nesta seção foram abordados os **fundamentos estatísticos essenciais para análise de dados**, com foco na aplicação prática utilizando Pandas e visualizações básicas.
+
+### 🔹 Conteúdos abordados
+- Medidas de posição (média, mediana e moda)
+- Medidas de dispersão (variância, desvio padrão e coeficiente de variação)
+- Medidas de forma (assimetria e curtose)
+- Correlação (Pearson e Spearman)
+- Visualização estatística com gráficos básicos
+
+### 📊 Demonstrações práticas
+
+#### 🔗 Análise de Correlação
+![Correlação Estatística](seccao-3-estatistica-aplicada/assets/gifs/correlacao_pearson_spearman.gif)
+
+#### 📈 Distribuição dos Dados
+![Distribuição dos Dados](seccao-3-estatistica-aplicada/assets/gifs/distribuicao_dados_hist_box.gif)
+
+---
+
+### 🚧 Seção 4 — Em andamento
+
+A próxima seção está atualmente em desenvolvimento e dará continuidade ao aprofundamento em análise e manipulação de dados.
 
 ---
 
