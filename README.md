@@ -145,7 +145,7 @@ Nesta seção foram abordados os **fundamentos estatísticos essenciais para an�
 
 ---
 
-### 🚧 Seção 4 — Em andamento
+### 🚧 Seção 4 Análise Exploratória de Dados (EDA) — Em andamento
 
 A próxima seção está atualmente em desenvolvimento e dará continuidade ao aprofundamento em análise e manipulação de dados.
 
@@ -153,8 +153,6 @@ A próxima seção está atualmente em desenvolvimento e dará continuidade ao a
 
 ## 📚 Próximas Seções (Roadmap)
 
-- 📐 **Estatística Aplicada**
-- 🔎 **Análise Exploratória de Dados (EDA)**
 - 📊 **Visualização de Dados**
 - 🌐 **Dashboards com Streamlit**
 - 🗄️ **Integração com Bancos de Dados (SQL, PostgreSQL, MongoDB)**
