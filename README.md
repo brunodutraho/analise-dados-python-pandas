@@ -152,10 +152,10 @@ comportamento dos clientes, identificar padrões relacionados ao churn e prepara
 os dados para análises futuras.
 
 ### 📊 Preparação e entendimento dos dados
-![Preparação dos Dados](assets/gifs/eda_preparacao_dados.gif)
+![Preparação dos Dados](seccao-4-analise-exploratoria-dados/assets/gifs/eda_preparacao_dados.gif)
 
 ### 📉 Análise de churn e insights de negócio
-![Churn e Contratos](assets/gifs/eda_churn_contratos_insights.gif)
+![Churn e Contratos](seccao-4-analise-exploratoria-dados/assets/gifs/eda_churn_contratos_insights.gif)
 
 > Testes estatísticos (Qui-Quadrado) foram utilizados para validar a relação entre
 tipo de contrato e churn, confirmando dependência entre as variáveis.
