@@ -145,7 +145,24 @@ Nesta seção foram abordados os **fundamentos estatísticos essenciais para an�
 
 ---
 
-### 🚧 Seção 4 Análise Exploratória de Dados (EDA) — Em andamento
+## 🔍 Seção 4 — Análise Exploratória dos Dados (EDA)
+
+Nesta etapa, foi realizada uma análise exploratória com foco em compreender o
+comportamento dos clientes, identificar padrões relacionados ao churn e preparar
+os dados para análises futuras.
+
+### 📊 Preparação e entendimento dos dados
+![Preparação dos Dados](assets/gifs/eda_preparacao_dados.gif)
+
+### 📉 Análise de churn e insights de negócio
+![Churn e Contratos](assets/gifs/eda_churn_contratos_insights.gif)
+
+> Testes estatísticos (Qui-Quadrado) foram utilizados para validar a relação entre
+tipo de contrato e churn, confirmando dependência entre as variáveis.
+
+---
+
+### 🚧 Seção 5 Visualização de Dados — Em andamento
 
 A próxima seção está atualmente em desenvolvimento e dará continuidade ao aprofundamento em análise e manipulação de dados.
 
@@ -153,7 +170,6 @@ A próxima seção está atualmente em desenvolvimento e dará continuidade ao a
 
 ## 📚 Próximas Seções (Roadmap)
 
-- 📊 **Visualização de Dados**
 - 🌐 **Dashboards com Streamlit**
 - 🗄️ **Integração com Bancos de Dados (SQL, PostgreSQL, MongoDB)**
 
