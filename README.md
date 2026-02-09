@@ -188,9 +188,15 @@ interativa e orientada ao negócio.
 Essas visualizações permitem uma análise mais rica e exploratória,
 facilitando a identificação de padrões e tendências.
 
+### 📈 Visualizações Interativas com Plotly
+
+![Gráfico Interativo com Plotly](seccao-5-dataviz/assets/gifs/plotly_interativo.gif)
+
 ---
 
 ### 🌍 Visualização Geográfica — Mapas Interativos
+
+![Mapa Interativo de Terremotos](seccao-5-dataviz/assets/gifs/mapa_terremotos_folium.gif)
 
 Como fechamento da seção, foi desenvolvido um **mapa interativo de terremotos**
 utilizando **Folium**, consumindo dados reais da API pública do
