@@ -162,7 +162,49 @@ tipo de contrato e churn, confirmando dependência entre as variáveis.
 
 ---
 
-### 🚧 Seção 5 Visualização de Dados — Em andamento
+## 📊 Seção 5 — Visualização de Dados (CONCLUÍDA)
+
+Nesta seção, o foco foi o **aprofundamento em visualização de dados**, explorando
+diferentes bibliotecas e abordagens para comunicar insights de forma clara,
+interativa e orientada ao negócio.
+
+### 🔹 Conteúdos abordados
+- Visualização estatística com **Seaborn**
+- Gráficos interativos com **Plotly**
+- Análise de relações entre variáveis (pairplot)
+- Distribuição de dados por categoria (violinplot)
+- Séries temporais interativas
+- Visualização geográfica com **Folium**
+- Integração com **datasets reais via URL (USGS)**
+
+---
+
+### 📈 Visualizações Estatísticas e Interativas
+
+- **Pairplot** para análise de correlação entre variáveis numéricas  
+- **Violinplot** para comparação de distribuições por categoria  
+- **Gráficos interativos com Plotly**, explorando séries temporais e dispersão  
+
+Essas visualizações permitem uma análise mais rica e exploratória,
+facilitando a identificação de padrões e tendências.
+
+---
+
+### 🌍 Visualização Geográfica — Mapas Interativos
+
+Como fechamento da seção, foi desenvolvido um **mapa interativo de terremotos**
+utilizando **Folium**, consumindo dados reais da API pública do
+**USGS (U.S. Geological Survey)**.
+
+#### 🔎 Funcionalidades:
+- Leitura direta de dataset CSV via URL
+- Filtro de terremotos significativos (magnitude ≥ 6.0)
+- Mapa interativo com marcadores georreferenciados
+- Informações contextuais via popups
+- Exportação do mapa em HTML
+
+📍 Arquivo gerado:
+
 
 A próxima seção está atualmente em desenvolvimento e dará continuidade ao aprofundamento em análise e manipulação de dados.
 
