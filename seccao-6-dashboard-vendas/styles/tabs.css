@@ -1,0 +1,31 @@
+/* =====================================================
+   TABS - Abas customizadas
+   ===================================================== */
+
+/* Botões base */
+button[data-baseweb="tab"] {
+    font-size: 17px;
+    padding: 10px 22px;
+    border-radius: 10px;
+    transition: all 0.2s ease-in-out;
+    margin-bottom: 10px;
+    background-color: var(--text-tertiary);
+}
+
+/* Força peso da fonte no conteúdo interno */
+button[data-baseweb="tab"] * {
+    font-weight: 700 !important;
+}
+
+/* Aba ativa */
+button[data-baseweb="tab"][aria-selected="true"] {
+    background-color: var(--primary-color);
+    color: white;
+    margin-bottom: 10px;
+}
+
+/* Hover */
+button[data-baseweb="tab"]:hover {
+    background-color: var(--secondary-color);
+    color: white;
+}
