@@ -1,8 +1,8 @@
 import streamlit as st
 from dataset import df
 from utils import format_number
-from transformacoes import receita_por_estado
-from graficos import grafico_receita_estado
+from transformacoes import receita_por_estado, receita_mensal
+from graficos import grafico_receita_estado, grafico_receita_mensal
 
 st.set_page_config(
     page_title="Dashboard de Vendas",
@@ -36,6 +36,7 @@ div[data-testid="stMetricValue"] {
 st.title("Dashboard de Vendas \U0001F6D2")
 
 df_rec_estado = receita_por_estado(df)
+df_rec_mensal = receita_mensal(df)
 
 aba_dataset, aba_receita, aba_vendedores = st.tabs(
     ['\U0001F4C4 Dataset', '\U0001F4B0 Receita', '\U0001F464 Vendedores']
@@ -64,10 +65,18 @@ with aba_receita:
         )
 
     st.divider()
-
     st.markdown("### \U0001F4CA Visão Executiva de Performance Comercial")
-
-    st.plotly_chart(
-        grafico_receita_estado(df_rec_estado),
-        use_container_width=True
-    )
+     
+    coluna3, coluna4 = st.columns(2)
+    with coluna3:
+        st.markdown("#### Receita por Estado")
+        st.plotly_chart(
+            grafico_receita_estado(df_rec_estado),
+            use_container_width=True
+        )
+    with coluna4:
+        st.markdown("#### Receita Mensal")
+        st.plotly_chart(
+            grafico_receita_mensal(df_rec_mensal),
+            use_container_width=True
+        )
