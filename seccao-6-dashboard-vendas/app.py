@@ -1,39 +1,22 @@
 import streamlit as st
 from dataset import df
-from utils import format_number
+from utils import format_number, load_all_css
 from transformacoes import receita_por_estado, receita_mensal
-from graficos import grafico_receita_estado, grafico_receita_mensal
+from graficos import (
+    grafico_receita_estado,
+    grafico_receita_mensal,
+    grafico_barra_receita_estado
+)
 
 st.set_page_config(
     page_title="Dashboard de Vendas",
     layout="wide"
 )
 
-st.markdown("""
-<style>
-div[data-testid="stMetric"] {
-    background-color: #F4F6F9;
-    padding: 20px;
-    border-radius: 12px;
-    border: 1px solid #E0E0E0;
-}
-
-div[data-testid="stMetricLabel"] {
-    font-size: 20px !important;
-    font-weight: 600 !important;
-    color: #555555;
-}
-
-div[data-testid="stMetricValue"] {
-    font-size: 34px !important;
-    font-weight: 700 !important;
-    color: #1F5DA8;
-}
-</style>
-""", unsafe_allow_html=True)
-
+st.markdown(load_all_css(), unsafe_allow_html=True)
 
 st.title("Dashboard de Vendas \U0001F6D2")
+st.divider()
 
 df_rec_estado = receita_por_estado(df)
 df_rec_mensal = receita_mensal(df)
@@ -69,14 +52,19 @@ with aba_receita:
      
     coluna3, coluna4 = st.columns(2)
     with coluna3:
-        st.markdown("#### Receita por Estado")
+        st.subheader("Receita por Estado")
         st.plotly_chart(
             grafico_receita_estado(df_rec_estado),
             use_container_width=True
         )
     with coluna4:
-        st.markdown("#### Receita Mensal")
+        st.subheader("Receita Mensal")
         st.plotly_chart(
             grafico_receita_mensal(df_rec_mensal),
             use_container_width=True
+        )
+    st.subheader("Top 5 Receita por Estados")
+    st.plotly_chart(
+        grafico_barra_receita_estado(df_rec_estado),
+        use_container_width=True
         )
