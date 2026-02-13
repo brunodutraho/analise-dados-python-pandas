@@ -1,0 +1,31 @@
+/* =====================================================
+   LAYOUT - Espaçamentos e Containers
+   ===================================================== */
+
+/* Espaçamento geral da página */
+.block-container {
+    padding-top: 3rem;
+    padding-bottom: 2rem;
+}
+
+/* Espaçamento entre seções */
+section.main {
+    min-height: 85vh;
+}
+
+section.main > div {
+    margin-bottom: 1.5rem;
+}
+
+/* Containers padrão */
+.dashboard-card {
+    background-color: var(--card-background);
+    padding: 20px;
+    border-radius: 14px;
+    box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.04);
+}
+
+/* Ajuste visual para colunas */
+div[data-testid="column"] {
+    padding: 10px;
+}
