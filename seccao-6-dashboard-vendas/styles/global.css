@@ -1,0 +1,70 @@
+/* =====================================================
+   GLOBAL THEME - Dashboard de Vendas
+   Autor: Bruno Dutra
+   ===================================================== */
+
+/* ===== VARIÁVEIS ===== */
+
+:root {
+    --primary-color: #1F4E79;
+    --secondary-color: #2E75B6;
+    --background-color: #F4F6F9;
+    --card-background: #FFFFFF;
+    --text-primary: #2C2C2C;
+    --text-secondary: #6B7280;
+    --text-tertiary: #e9e9e9;
+    --success-color: #2E8B57;
+    --danger-color: #C0392B;
+}
+
+
+/* ===== BASE ===== */
+
+html, body, [class*="css"] {
+    font-family: 'Segoe UI', sans-serif;
+    color: var(--text-primary);
+}
+
+.main {
+    background-color: var(--background-color);
+}
+
+
+/* ===== TITULOS ===== */
+
+h1 {
+    text-align: center;
+    font-weight: 700;
+    color: var(--primary-color);
+    margin-bottom: 0.5rem;
+}
+
+h2, h3 {
+    font-weight: 600;
+    color: var(--secondary-color);
+}
+
+
+/* ===== DIVISORES ===== */
+
+hr {
+    border: none;
+    height: 1px;
+    background-color: #E5E7EB;
+}
+
+
+/* ===== BOTÕES PADRÃO ===== */
+
+button {
+    border-radius: 8px !important;
+}
+
+
+/* ===== DATAFRAME ===== */
+
+div[data-testid="stDataFrame"] {
+    background-color: var(--card-background);
+    border-radius: 12px;
+    padding: 10px;
+}
