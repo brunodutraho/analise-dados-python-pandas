@@ -38,13 +38,11 @@ def receita_por_categoria(df):
       )
 
 @st.cache_data
-def receita_por_vendedores(df):
-      return (
-            df.groupby('Vendedor', as_index=False).agg(
-                  Receita_Total=('Preço', 'sum'),
-                  Quantidade_Vendas=('Preço', 'count')
-            )
-            .sort_values('Receita_Total', ascending=False)
-            
-      )
-
+def performance_vendedores(df):
+    return (
+        df.groupby('Vendedor', as_index=False)
+        .agg(
+            Receita_Total=('Preço', 'sum'),
+            Quantidade_Vendas=('Preço', 'count')
+        )
+    )
