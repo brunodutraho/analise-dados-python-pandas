@@ -113,3 +113,47 @@ def grafico_receita_mensal(df_rec_mensal):
 
 
     return fig
+
+# Gráfico de barras receita por categoria
+def grafico_receita_categoria(df_rec_categoria):
+    
+    df_plot = (
+        df_rec_categoria
+        .head(7)
+        .copy()
+    )
+
+    df_plot['Receita Formatada'] = df_plot['Preço'].apply(
+        lambda x: f'R$ {x:,.2f}'
+    )
+
+    fig = px.bar(
+        df_plot,
+        x = 'Categoria do Produto',
+        y = 'Preço',
+        height = 520,
+        text = 'Receita Formatada',
+    )
+
+    fig.update_traces(
+        marker_color='#1F4E79',
+        textposition='outside',
+        customdata=df_plot[['Receita Formatada']],
+        hovertemplate=
+        "<b>%{x}</b><br><br>" +
+        "Receita: %{customdata[0]}" +
+        "<extra></extra>"
+    )
+
+    
+    fig.update_layout(
+        yaxis=dict(range=[0, df_plot['Preço'].max()]),
+        yaxis_title='Receita',
+        xaxis_title='Categoria',
+        margin=dict(l=0, r=0, t=40, b=0),
+        showlegend=False,
+        uniformtext_minsize=10,
+        uniformtext_mode='hide'
+    )
+    
+    return fig
