@@ -146,9 +146,9 @@ def grafico_receita_categoria(df_rec_categoria):
         "Receita: %{customdata[0]}" +
         "<extra></extra>"
     )
-    max_vlaue = df_plot['Preço'].max()
+    max_value = df_plot['Preço'].max()
     fig.update_layout(
-        yaxis=dict(range=[0, max_vlaue * 1.15]),
+        yaxis=dict(range=[0, max_value * 1.15]),
         yaxis_title='Receita',
         xaxis_title='Categoria',
         margin=dict(l=0, r=0, t=40, b=0),
@@ -176,6 +176,7 @@ def grafico_receita_vendedores(df_rec_vendedores):
         df_plot,
         x='Receita_Total',
         y='Vendedor',
+        orientation='h',
         height=520,
         text='Receita Formatada',
     )
@@ -194,8 +195,8 @@ def grafico_receita_vendedores(df_rec_vendedores):
 
     fig.update_layout(
         xaxis=dict(range=[0, max_value * 1.15]),
-        xaxis_title='Vendedor',
-        yaxis_title='Receita',
+        xaxis_title='Receita',
+        yaxis_title='Vendedor',
         margin=dict(l=0, r=0, t=40, b=0),
         showlegend=False,
         uniformtext_minsize=10,
@@ -204,3 +205,48 @@ def grafico_receita_vendedores(df_rec_vendedores):
 
     return fig
 
+# Gráfico de barras vendas por vendedores
+def grafico_vendas_vendedores(df_vendas_vendedores):
+
+    df_plot = (
+        df_vendas_vendedores
+        .head(7)
+        .copy()
+    )
+
+    df_plot['Quantidade Formatada'] = df_plot['Quantidade_Vendas'].apply(
+        lambda x: f'{x:,.0f}'
+    )
+
+    fig = px.bar(
+        df_plot,
+        x='Quantidade_Vendas',
+        y='Vendedor',
+        orientation='h',
+        height=520,
+        text='Quantidade Formatada'
+    )
+
+    fig.update_traces(
+        marker_color='#1F4E79',
+        textposition='outside',
+        customdata=df_plot[['Quantidade Formatada']],
+        hovertemplate=
+        "<b>%{y}</b><br><br>" +
+        "Quantidade de Vendas: %{customdata[0]}" +
+        "<extra></extra>"
+    )
+
+    max_value = df_plot["Quantidade_Vendas"].max()
+
+    fig.update_layout(
+        xaxis=dict(range=[0, max_value * 1.15]),
+        xaxis_title='Quantidade de Vendas',
+        yaxis_title='Vendedor',
+        margin=dict(l=0, r=0, t=40, b=0),
+        showlegend=False,
+        uniformtext_minsize=10,
+        uniformtext_mode='hide'
+    )
+
+    return fig
