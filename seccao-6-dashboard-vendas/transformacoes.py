@@ -29,3 +29,11 @@ def receita_mensal(df):
     
         return df_mensal
 
+@st.cache_data
+def receita_por_categoria(df):
+      return (
+            df.groupby('Categoria do Produto', as_index=False)['Preço']
+            .sum()
+            .sort_values('Preço', ascending=False)
+      )
+
