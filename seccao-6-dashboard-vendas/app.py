@@ -1,11 +1,12 @@
 import streamlit as st
 from dataset import df
 from utils import format_number, load_all_css
-from transformacoes import receita_por_estado, receita_mensal
+from transformacoes import receita_por_estado, receita_mensal, receita_por_categoria
 from graficos import (
     grafico_receita_estado,
     grafico_receita_mensal,
-    grafico_barra_receita_estado
+    grafico_barra_receita_estado,
+    grafico_receita_categoria
 )
 
 st.set_page_config(
@@ -20,6 +21,7 @@ st.divider()
 
 df_rec_estado = receita_por_estado(df)
 df_rec_mensal = receita_mensal(df)
+df_rec_categoria = receita_por_categoria(df)
 
 aba_dataset, aba_receita, aba_vendedores = st.tabs(
     ['\U0001F4C4 Dataset', '\U0001F4B0 Receita', '\U0001F464 Vendedores']
@@ -63,8 +65,17 @@ with aba_receita:
             grafico_receita_mensal(df_rec_mensal),
             use_container_width=True
         )
-    st.subheader("Top 5 Receita por Estados")
-    st.plotly_chart(
-        grafico_barra_receita_estado(df_rec_estado),
-        use_container_width=True
+    coluna5, coluna6 = st.columns(2)
+    with coluna5:
+        st.subheader("Top 5 Receita por Estados")
+        st.plotly_chart(
+            grafico_barra_receita_estado(df_rec_estado),
+            use_container_width=True
+        )
+
+    with coluna6:
+        st.subheader("Top 7 Categoria Produto")
+        st.plotly_chart(
+            grafico_receita_categoria(df_rec_categoria),
+            use_container_width=True
         )
