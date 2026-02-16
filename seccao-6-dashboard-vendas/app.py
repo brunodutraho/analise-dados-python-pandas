@@ -1,5 +1,6 @@
 import streamlit as st
 import pandas as pd
+import numpy as np
 from dataset import df
 from utils import format_number, load_all_css
 from transformacoes import (
@@ -7,7 +8,8 @@ from transformacoes import (
     receita_mensal,
     receita_por_categoria,
     performance_vendedores,
-    pareto_vendedores
+    pareto_vendedores,
+    comparar_periodos
 )
 from graficos import (
     grafico_receita_mensal,
@@ -77,6 +79,12 @@ df_filtrado = aplicar_filtros(df, filtros)
 if df_filtrado.empty:
     st.warning("Sem dados para os filtros selecionados.")
     st.stop()
+# ================= COMPARAÇÃO DE PERÍODO =================
+receita_atual, receita_anterior, variacao_periodo = comparar_periodos(
+    df,
+    data_inicio,
+    data_fim
+)
 
 # ================= TRANSFORMAÇÕES =================
 df_rec_estado = receita_por_estado(df_filtrado)
@@ -97,11 +105,13 @@ ticket_medio = (
     else 0
 )
 crescimento_mensal = (
-    df_rec_mensal["Crescimento_%"].iloc[-1]
+    df_rec_mensal["Crescimento_%"]
+    .replace([np.inf, -np.inf], 0)
+    .fillna(0)
+    .iloc[-1]
     if not df_rec_mensal.empty
     else 0
 )
-
 
 estado_top = (
     df_rec_estado.iloc[0]["Local da compra"]
@@ -137,9 +147,9 @@ with aba_receita:
     col1, col2, col3, col4, col5 = st.columns(5)
 
     col1.metric(
-        "\U0001F4B0 Receita Total",
-        format_number(receita_total, prefix="R$ "),
-        delta=format_number(delta_receita, prefix="R$ ")
+    "\U0001F4B0 Receita Total",
+    format_number(receita_atual, prefix="R$ "),
+    delta=f"{variacao_periodo:.2f}% vs período anterior"
     )
 
     col2.metric(
