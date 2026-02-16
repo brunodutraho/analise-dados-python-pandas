@@ -71,42 +71,45 @@ def pareto_vendedores(df_perf: pd.DataFrame) -> pd.DataFrame:
     return df_pareto
 
 @st.cache_data
-def comparar_periodos(df, data_inicio, data_fim):
-    """
-    Compara o período selecionado com o período anterior equivalente.
+def comparar_periodos(df, data_inicio, data_fim, tipo="Período anterior"):
 
-    Retorna:
-    - receita_atual
-    - receita_anterior
-    - variacao_percentual
-    """
-
-    periodo_atual = df[
+    # Receita período atual
+    df_atual = df[
         (df["Data da Compra"] >= data_inicio) &
         (df["Data da Compra"] <= data_fim)
     ]
+    receita_atual = df_atual["Preço"].sum()
 
-    receita_atual = periodo_atual["Preço"].sum()
+    # =============================
+    # DEFINIR PERÍODO DE COMPARAÇÃO
+    # =============================
 
-    # calcula duração do período
-    dias_periodo = (data_fim - data_inicio).days
+    if tipo == "Período anterior":
+        delta = data_fim - data_inicio
+        data_inicio_anterior = data_inicio - delta - pd.Timedelta(days=1)
+        data_fim_anterior = data_inicio - pd.Timedelta(days=1)
 
-    # define período anterior equivalente
-    data_fim_anterior = data_inicio - pd.Timedelta(days=1)
-    data_inicio_anterior = data_fim_anterior - pd.Timedelta(days=dias_periodo)
+    elif tipo == "Mesmo período do ano anterior":
+        data_inicio_anterior = data_inicio - pd.DateOffset(years=1)
+        data_fim_anterior = data_fim - pd.DateOffset(years=1)
 
-    periodo_anterior = df[
+    else:
+        return receita_atual, 0, 0
+
+    df_anterior = df[
         (df["Data da Compra"] >= data_inicio_anterior) &
         (df["Data da Compra"] <= data_fim_anterior)
     ]
 
-    receita_anterior = periodo_anterior["Preço"].sum()
+    receita_anterior = df_anterior["Preço"].sum()
 
-    if receita_anterior > 0:
-        variacao_percentual = (
-            (receita_atual - receita_anterior) / receita_anterior
-        ) * 100
+    # =============================
+    # Cálculo da variação %
+    # =============================
+
+    if receita_anterior == 0:
+        variacao = 0
     else:
-        variacao_percentual = 0
+        variacao = ((receita_atual - receita_anterior) / receita_anterior) * 100
 
-    return receita_atual, receita_anterior, variacao_percentual
+    return receita_atual, receita_anterior, variacao
