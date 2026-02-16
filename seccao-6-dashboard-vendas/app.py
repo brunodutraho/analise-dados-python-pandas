@@ -35,6 +35,18 @@ if df.empty:
     st.warning("\U000026A0 Dataset vazio.")
     st.stop()
 
+# ================= FILTRO =================
+st.sidebar.title('Filtro de Vendedores')
+filtro_vendedor = st.sidebar.multiselect(
+    'Vendedores',
+    sorted(df['Vendedor'].dropna().unique())
+
+)
+
+df_filtrado = df.copy()
+if filtro_vendedor:
+    df_filtrado = df_filtrado[df_filtrado['Vendedor'].isin(filtro_vendedor)]
+
 # ================= TRANSFORMAÇÕES =================
 df_rec_estado = receita_por_estado(df)
 df_rec_mensal = receita_mensal(df)
