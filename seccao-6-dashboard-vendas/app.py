@@ -18,6 +18,7 @@ from graficos import (
     grafico_pareto,
     grafico_histograma,
 )
+from core.filters import aplicar_filtros
 
 # ================= CONFIGURAÇÃO =================
 st.set_page_config(
@@ -35,40 +36,59 @@ if df.empty:
     st.warning("\U000026A0 Dataset vazio.")
     st.stop()
 
-# ================= FILTRO =================
-st.sidebar.title('Filtro de Vendedores')
-filtro_vendedor = st.sidebar.multiselect(
-    'Vendedores',
-    sorted(df['Vendedor'].dropna().unique())
+# ================= FILTROS =================
 
+st.sidebar.title("Filtro de Vendedores")
+
+filtro_vendedor = st.sidebar.multiselect(
+    "Vendedores",
+    sorted(df["Vendedor"].dropna().unique()),
+    default=[]
 )
 
-df_filtrado = df.copy()
-if filtro_vendedor:
-    df_filtrado = df_filtrado[df_filtrado['Vendedor'].isin(filtro_vendedor)]
+# ================= APLICAÇÃO DOS FILTROS =================
+
+filtros = {
+    "vendedores": filtro_vendedor
+}
+
+df_filtrado = aplicar_filtros(df, filtros)
 
 if df_filtrado.empty:
-    st.warning("Nenhum dado encontrado para o filtro selecionado.")
+    st.warning("Sem dados para os filtros selecionados.")
     st.stop()
 
 # ================= TRANSFORMAÇÕES =================
-df_rec_estado = receita_por_estado(df)
-df_rec_mensal = receita_mensal(df)
-df_rec_categoria = receita_por_categoria(df)
-df_perf = performance_vendedores(df)
+df_rec_estado = receita_por_estado(df_filtrado)
+df_rec_mensal = receita_mensal(df_filtrado)
+df_rec_categoria = receita_por_categoria(df_filtrado)
+df_perf = performance_vendedores(df_filtrado)
 df_pareto = pareto_vendedores(df_perf)
 
 df_rec_vendedores = df_perf.sort_values("Receita_Total", ascending=False)
 df_vendas_vendedores = df_perf.sort_values("Quantidade_Vendas", ascending=False)
 
 # ================= KPIs =================
-receita_total = df["Preço"].sum()
-quantidade_vendas = df.shape[0]
+receita_total = df_filtrado["Preço"].sum()
+quantidade_vendas = df_filtrado.shape[0]
 ticket_medio = receita_total / quantidade_vendas
-crescimento_mensal = df_rec_mensal["Crescimento_%"].iloc[-1]
+crescimento_mensal = (
+    df_rec_mensal["Crescimento_%"].iloc[-1]
+    if not df_rec_mensal.empty
+    else 0
+)
 
-estado_top = df_rec_estado.iloc[0]["Local da compra"]
-valor_top = df_rec_estado.iloc[0]["Preço"]
+
+estado_top = (
+    df_rec_estado.iloc[0]["Local da compra"]
+    if not df_rec_estado.empty
+    else "-"
+)
+valor_top = (
+    df_rec_estado.iloc[0]["Preço"]
+    if not df_rec_estado.empty
+    else 0
+)
 
 # ===== METAS SIMULADAS =====
 meta_receita = receita_total * 1.10
@@ -239,7 +259,7 @@ with aba_analise:
 
     st.subheader("\U0001F4CA Distribuição de Preços")
     st.plotly_chart(
-        grafico_histograma(df),
+        grafico_histograma(df_filtrado),
         use_container_width=True
     )
 
@@ -267,4 +287,4 @@ with aba_analise:
 with aba_dataset:
 
     st.subheader("\U0001F50D Visualização Completa do Dataset")
-    st.dataframe(df, use_container_width=True)
+    st.dataframe(df_filtrado, use_container_width=True)
