@@ -69,3 +69,44 @@ def pareto_vendedores(df_perf: pd.DataFrame) -> pd.DataFrame:
     ) * 100
 
     return df_pareto
+
+@st.cache_data
+def comparar_periodos(df, data_inicio, data_fim):
+    """
+    Compara o período selecionado com o período anterior equivalente.
+
+    Retorna:
+    - receita_atual
+    - receita_anterior
+    - variacao_percentual
+    """
+
+    periodo_atual = df[
+        (df["Data da Compra"] >= data_inicio) &
+        (df["Data da Compra"] <= data_fim)
+    ]
+
+    receita_atual = periodo_atual["Preço"].sum()
+
+    # calcula duração do período
+    dias_periodo = (data_fim - data_inicio).days
+
+    # define período anterior equivalente
+    data_fim_anterior = data_inicio - pd.Timedelta(days=1)
+    data_inicio_anterior = data_fim_anterior - pd.Timedelta(days=dias_periodo)
+
+    periodo_anterior = df[
+        (df["Data da Compra"] >= data_inicio_anterior) &
+        (df["Data da Compra"] <= data_fim_anterior)
+    ]
+
+    receita_anterior = periodo_anterior["Preço"].sum()
+
+    if receita_anterior > 0:
+        variacao_percentual = (
+            (receita_atual - receita_anterior) / receita_anterior
+        ) * 100
+    else:
+        variacao_percentual = 0
+
+    return receita_atual, receita_anterior, variacao_percentual
