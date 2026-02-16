@@ -1,4 +1,5 @@
 import streamlit as st
+import pandas as pd
 from dataset import df
 from utils import format_number, load_all_css
 from transformacoes import (
@@ -46,10 +47,29 @@ filtro_vendedor = st.sidebar.multiselect(
     default=[]
 )
 
+st.sidebar.title("Filtro de Período")
+
+data_min = df["Data da Compra"].min().date()
+data_max = df["Data da Compra"].max().date()
+
+periodo = st.sidebar.date_input(
+    "Período",
+    value=(data_min, data_max)
+)
+
+if isinstance(periodo, tuple) and len(periodo) == 2:
+    data_inicio = pd.to_datetime(periodo[0])
+    data_fim = pd.to_datetime(periodo[1])
+else:
+    st.warning("Selecione um intervalo válido de datas.")
+    st.stop()
+
 # ================= APLICAÇÃO DOS FILTROS =================
 
 filtros = {
-    "vendedores": filtro_vendedor
+    "vendedores": filtro_vendedor,
+    "data_inicio": data_inicio,
+    "data_fim": data_fim
 }
 
 df_filtrado = aplicar_filtros(df, filtros)
@@ -71,7 +91,11 @@ df_vendas_vendedores = df_perf.sort_values("Quantidade_Vendas", ascending=False)
 # ================= KPIs =================
 receita_total = df_filtrado["Preço"].sum()
 quantidade_vendas = df_filtrado.shape[0]
-ticket_medio = receita_total / quantidade_vendas
+ticket_medio = (
+    receita_total / quantidade_vendas
+    if quantidade_vendas > 0
+    else 0
+)
 crescimento_mensal = (
     df_rec_mensal["Crescimento_%"].iloc[-1]
     if not df_rec_mensal.empty
