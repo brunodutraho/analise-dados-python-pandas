@@ -1,14 +1,64 @@
 import plotly.express as px
+import plotly.graph_objects as go
 
-# Mapa contendo a receita por estados
-def grafico_receita_estado(df_rec_estado):
 
-    df_plot = df_rec_estado.copy()
+# ==========================================================
+# FUNÇÃO AUXILIAR - FORMATAÇÃO EM REAL (PADRÃO BR)
+# ==========================================================
+def formatar_real(valor):
+    return f"R$ {valor:,.2f}".replace(",", "X").replace(".", ",").replace("X", ".")
+
+# ==========================================================
+# RECEITA POR ESTADO (TOP 5)
+# ==========================================================
+def grafico_barra_receita_estado(df):
+
+    df_plot = (
+        df.sort_values("Preço", ascending=False)
+        .head(5)
+        .copy()
+    )
+
+    df_plot["Receita_Formatada"] = df_plot["Preço"].apply(formatar_real)
+
+    fig = px.bar(
+        df_plot,
+        x="Local da compra",
+        y="Preço",
+        text="Receita_Formatada",
+        height=520
+    )
+
+    fig.update_traces(
+        textposition="outside",
+        customdata=df_plot[["Receita_Formatada"]],
+        hovertemplate=
+        "<b>Estado:</b> %{x}<br>" +
+        "<b>Receita Total:</b> %{customdata[0]}" +
+        "<extra></extra>"
+    )
+
+    fig.update_layout(
+        title="Top 5 Estados por Receita",
+        xaxis_title="Estado",
+        yaxis_title="Receita (R$)",
+        margin=dict(l=0, r=0, t=50, b=0),
+        showlegend=False
+    )
+
+    return fig
+
+# ==========================================================
+# MAPA - RECEITA POR ESTADO
+# ==========================================================
+def grafico_receita_estado_mapa(df):
+
+    df_plot = df.copy()
 
     df_plot['Receita Formatada'] = df_plot['Preço'].apply(
         lambda x: f'R$ {x:,.2f}'
     )
-    
+
     fig = px.scatter_mapbox(
         df_plot,
         lat='lat',
@@ -17,236 +67,236 @@ def grafico_receita_estado(df_rec_estado):
         color='Preço',
         hover_name='Local da compra',
         custom_data=['Receita Formatada'],
-        zoom=3.2,
+        zoom=3.6, 
         height=520,
-        size_max=60,
+        size_max=65,
         mapbox_style='carto-positron',
-        color_continuous_scale='Viridis'
+        color_continuous_scale='viridis'
     )
 
     fig.update_traces(
-            hovertemplate=
-            "<b>%{hovertext}</b><br>" +
-            "Receita: %{customdata[0]}<extra></extra>"
-        )
-
-    fig.update_layout(
-        margin=dict(l=0, r=0, t=40, b=0),
-    )
-
-    return fig
-
-# Gráfico de Barras da receita por estados
-def grafico_barra_receita_estado(df_rec_estado):
-
-    df_plot = (
-            df_rec_estado
-            .sort_values('Preço', ascending=False)
-            .head(5)
-            .copy()
-        )
-
-    df_plot['Receita Formatada'] = df_plot['Preço'].apply(
-        lambda x: f'R$ {x:,.2f}'
-    )
-
-    fig = px.bar(
-        df_plot,
-        x= 'Local da compra',
-        y= 'Preço',
-        height=520,
-        text= 'Receita Formatada',
-    )
-
-    fig.update_traces(
-        marker_color='#1F4E79',
-        textposition='outside',
-        customdata=df_plot[["Receita Formatada"]],
+        marker=dict(
+            opacity=0.85
+        ),
         hovertemplate=
-        "<b>%{x}</b><br><br>" +
-        "Receita: %{customdata[0]}" +
+        "<b>%{hovertext}</b><br>" +
+        "Receita Total: %{customdata[0]}" +
         "<extra></extra>"
     )
 
-    max_value = df_plot['Preço'].max()
-    
     fig.update_layout(
-        yaxis=dict(range=[0, max_value * 1.15]),
-        yaxis_title='Receita',
-        xaxis_title='Estado',
+        mapbox=dict(
+            center=dict(lat=-14.2350, lon=-51.9253)
+        ),
         margin=dict(l=0, r=0, t=40, b=0),
-        showlegend=False,
-        uniformtext_minsize=10,
-        uniformtext_mode='hide'
+        coloraxis_colorbar=dict(
+            title="Receita (R$)"
         )
+    )
 
     return fig
 
-# Gráfico de linhas da receita mensal
-def grafico_receita_mensal(df_rec_mensal):
-    
-    df_plot = df_rec_mensal.copy()
+# ==========================================================
+# RECEITA MENSAL
+# ==========================================================
+def grafico_receita_mensal(df):
 
-    df_plot['Receita Formatada'] = df_plot['Preço'].apply(
-        lambda x: f'R$ {x:,.2f}'
-    )
+    df_plot = df.copy()
+    df_plot["Receita_Formatada"] = df_plot["Preço"].apply(formatar_real)
+
     fig = px.line(
         df_plot,
-        x = 'Data da Compra',
-        y = 'Preço',
-        markers = True,
-        color = 'Ano',
+        x="Data da Compra",
+        y="Preço",
+        markers=True,
         height=520,
-        custom_data=['Receita Formatada'],
-        range_y=[0, df_plot['Preço'].max()]
-    )
-    
-    fig.update_traces(
-        hovertemplate=
-        "<b>%{x}</b><br>" +
-        "Receita: %{customdata[0]}<extra></extra>"
-    )
-
-    fig.update_layout(
-        yaxis=dict(range=[0, df_plot['Preço'].max()]),
-        yaxis_title = 'Receita',
-        margin=dict(l=0, r=0, t=40, b=0)
-    )
-
-
-    return fig
-
-# Gráfico de barras receita por categoria
-def grafico_receita_categoria(df_rec_categoria):
-    
-    df_plot = (
-        df_rec_categoria
-        .head(7)
-        .copy()
-    )
-
-    df_plot['Receita Formatada'] = df_plot['Preço'].apply(
-        lambda x: f'R$ {x:,.2f}'
-    )
-
-    fig = px.bar(
-        df_plot,
-        x = 'Categoria do Produto',
-        y = 'Preço',
-        height = 520,
-        text = 'Receita Formatada',
+        custom_data=["Receita_Formatada"]
     )
 
     fig.update_traces(
-        marker_color='#1F4E79',
-        textposition='outside',
-        customdata=df_plot[['Receita Formatada']],
         hovertemplate=
-        "<b>%{x}</b><br><br>" +
-        "Receita: %{customdata[0]}" +
-        "<extra></extra>"
-    )
-    max_value = df_plot['Preço'].max()
-    fig.update_layout(
-        yaxis=dict(range=[0, max_value * 1.15]),
-        yaxis_title='Receita',
-        xaxis_title='Categoria',
-        margin=dict(l=0, r=0, t=40, b=0),
-        showlegend=False,
-        uniformtext_minsize=10,
-        uniformtext_mode='hide'
-    )
-    
-    return fig
-
-# Gráfico de barras receita por vendedores
-def grafico_receita_vendedores(df_rec_vendedores):
-    
-    df_plot = (
-        df_rec_vendedores
-        .head(7)
-        .copy()
-    )
-
-    df_plot['Receita Formatada'] = df_plot['Receita_Total'].apply(
-        lambda x: f'R$ {x:,.2f}'
-    )
- 
-    fig = px.bar(
-        df_plot,
-        x='Receita_Total',
-        y='Vendedor',
-        orientation='h',
-        height=520,
-        text='Receita Formatada',
-    )
-
-    fig.update_traces(
-        marker_color='#1F4E79',
-        textposition='outside',
-        customdata=df_plot[['Receita Formatada']],
-        hovertemplate=
-        "<b>%{y}</b><br></br>" +
-        "Receita: %{customdata[0]}" +
+        "<b>Período:</b> %{x|%m/%Y}<br>" +
+        "<b>Receita:</b> %{customdata[0]}" +
         "<extra></extra>"
     )
 
+    fig.update_layout(
+        title="Evolução da Receita Mensal",
+        xaxis_title="Período",
+        yaxis_title="Receita (R$)",
+        margin=dict(l=0, r=0, t=50, b=0)
+    )
+
+    return fig
+
+# ==========================================================
+# RECEITA POR CATEGORIA (TOP 7)
+# ==========================================================
+def grafico_receita_categoria(df):
+
+    df_plot = df.head(7).copy()
+    df_plot["Receita_Formatada"] = df_plot["Preço"].apply(formatar_real)
+
+    fig = px.bar(
+        df_plot,
+        x="Categoria do Produto",
+        y="Preço",
+        text="Receita_Formatada",
+        height=520
+    )
+
+    fig.update_traces(
+        textposition="outside",
+        customdata=df_plot[["Receita_Formatada"]],
+        hovertemplate=
+        "<b>Categoria:</b> %{x}<br>" +
+        "<b>Receita Total:</b> %{customdata[0]}" +
+        "<extra></extra>"
+    )
+    max_vlaue = df_plot['Preço'].max()
+    fig.update_layout(
+        title="Top 7 Categorias por Receita",
+        xaxis_title="Categoria",
+        yaxis=dict(range=[0, max_vlaue * 1.15]),
+        yaxis_title="Receita (R$)",
+        margin=dict(l=0, r=0, t=50, b=0),
+        showlegend=False
+    )
+
+    return fig
+
+# ==========================================================
+# RECEITA POR VENDEDOR
+# ==========================================================
+def grafico_receita_vendedores(df):
+
+    df_plot = df.head(7).copy()
+    df_plot["Receita_Formatada"] = df_plot["Receita_Total"].apply(formatar_real)
+
+    fig = px.bar(
+        df_plot,
+        x="Receita_Total",
+        y="Vendedor",
+        orientation="h",
+        text="Receita_Formatada",
+        height=520
+    )
+
+    fig.update_traces(
+        textposition="outside",
+        customdata=df_plot[["Receita_Formatada"]],
+        hovertemplate=
+        "<b>Vendedor:</b> %{y}<br>" +
+        "<b>Receita Total:</b> %{customdata[0]}" +
+        "<extra></extra>"
+    )
     max_value = df_plot["Receita_Total"].max()
-
     fig.update_layout(
+        title="Top 7 Vendedores por Receita",
         xaxis=dict(range=[0, max_value * 1.15]),
-        xaxis_title='Receita',
-        yaxis_title='Vendedor',
-        margin=dict(l=0, r=0, t=40, b=0),
-        showlegend=False,
-        uniformtext_minsize=10,
-        uniformtext_mode='hide'
+        xaxis_title="Receita (R$)",
+        yaxis_title="Vendedor",
+        margin=dict(l=0, r=0, t=50, b=0),
+        showlegend=False
     )
 
     return fig
 
-# Gráfico de barras vendas por vendedores
-def grafico_vendas_vendedores(df_vendas_vendedores):
+# ==========================================================
+# QUANTIDADE DE VENDAS POR VENDEDOR
+# ==========================================================
+def grafico_vendas_vendedores(df):
 
-    df_plot = (
-        df_vendas_vendedores
-        .head(7)
-        .copy()
-    )
-
-    df_plot['Quantidade Formatada'] = df_plot['Quantidade_Vendas'].apply(
-        lambda x: f'{x:,.0f}'
-    )
+    df_plot = df.head(7).copy()
 
     fig = px.bar(
         df_plot,
-        x='Quantidade_Vendas',
-        y='Vendedor',
-        orientation='h',
-        height=520,
-        text='Quantidade Formatada'
+        x="Quantidade_Vendas",
+        y="Vendedor",
+        orientation="h",
+        text="Quantidade_Vendas",
+        height=520
     )
 
     fig.update_traces(
-        marker_color='#1F4E79',
-        textposition='outside',
-        customdata=df_plot[['Quantidade Formatada']],
+        textposition="outside",
         hovertemplate=
-        "<b>%{y}</b><br><br>" +
-        "Quantidade de Vendas: %{customdata[0]}" +
+        "<b>Vendedor:</b> %{y}<br>" +
+        "<b>Quantidade de Vendas:</b> %{x}" +
+        "<extra></extra>"
+    )
+     
+    fig.update_layout(
+        title="Top 7 Vendedores por Volume de Vendas",
+        yaxis_title="Vendedor",
+        xaxis_title="Quantidade de Vendas",
+        margin=dict(l=0, r=0, t=50, b=0),
+        showlegend=False
+    )
+
+    return fig
+
+# ==========================================================
+# CURVA DE PARETO
+# ==========================================================
+def grafico_pareto(df):
+
+    fig = go.Figure()
+
+    fig.add_bar(
+        x=df["Vendedor"],
+        y=df["Receita_Total"],
+        name="Receita"
+    )
+
+    fig.add_scatter(
+        x=df["Vendedor"],
+        y=df["%_Acumulado"],
+        name="% Acumulado",
+        yaxis="y2"
+    )
+
+    fig.update_layout(
+        title="Curva de Pareto - Concentração de Receita",
+        yaxis=dict(title="Receita (R$)"),
+        yaxis2=dict(
+            title="% Acumulado",
+            overlaying="y",
+            side="right"
+        ),
+        hovermode="x unified",
+        height=520
+    )
+
+    return fig
+
+# ==========================================================
+# DISTRIBUIÇÃO DE PREÇOS (HISTOGRAMA)
+# ==========================================================
+def grafico_histograma(df):
+
+    df_plot = df.copy()
+
+    fig = px.histogram(
+        df_plot,
+        x="Preço",
+        nbins=30,
+        height=520
+    )
+
+    fig.update_traces(
+        hovertemplate=
+        "<b>Faixa de Preço:</b> R$ %{x:,.2f}<br>" +
+        "<b>Quantidade de Vendas:</b> %{y}" +
         "<extra></extra>"
     )
 
-    max_value = df_plot["Quantidade_Vendas"].max()
-
     fig.update_layout(
-        xaxis=dict(range=[0, max_value * 1.15]),
-        xaxis_title='Quantidade de Vendas',
-        yaxis_title='Vendedor',
-        margin=dict(l=0, r=0, t=40, b=0),
-        showlegend=False,
-        uniformtext_minsize=10,
-        uniformtext_mode='hide'
+        title="Distribuição de Vendas por Faixa de Preço",
+        xaxis_title="Preço (R$)",
+        yaxis_title="Quantidade de Vendas",
+        bargap=0.05,
+        margin=dict(l=0, r=0, t=50, b=0)
     )
 
     return fig
