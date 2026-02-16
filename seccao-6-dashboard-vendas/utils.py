@@ -1,17 +1,42 @@
-# Leitura dos arquivos CSS
 import os
-def load_all_css(folder_path="styles"):
+from pathlib import Path
+
+
+def load_all_css(folder_path: str = "styles") -> str:
+    """
+    Carrega todos os arquivos .css de uma pasta e retorna
+    como string HTML <style>.
+    """
     css = ""
-    for file in os.listdir(folder_path):
-        if file.endswith(".css"):
-            with open(os.path.join(folder_path, file), encoding="utf-8") as f:
-                css += f.read()
+    path = Path(folder_path)
+
+    if not path.exists():
+        return ""
+
+    for file in sorted(path.glob("*.css")):
+        css += file.read_text(encoding="utf-8")
+
     return f"<style>{css}</style>"
 
-# Formatação de valores monetários    
-def format_number(value, prefix = ''):
-    for unit in ['', 'mil']:
-        if value < 1000:
-            return f'{prefix}{value:,.2f}{unit}'.strip()
-        value /= 1000
-    return f'{prefix}{value:,.2f} milhões'
+
+def format_number(value: float, prefix: str = "") -> str:
+    """
+    Formata números grandes para padrão brasileiro:
+    1.500,00 | 1,5 mil | 2,3 milhões
+    """
+    abs_value = abs(value)
+
+    if abs_value >= 1_000_000:
+        formatted = f"{value / 1_000_000:,.2f} milhões"
+    elif abs_value >= 1_000:
+        formatted = f"{value / 1_000:,.2f} mil"
+    else:
+        formatted = f"{value:,.2f}"
+
+    return (
+        prefix +
+        formatted
+        .replace(",", "X")
+        .replace(".", ",")
+        .replace("X", ".")
+    )
