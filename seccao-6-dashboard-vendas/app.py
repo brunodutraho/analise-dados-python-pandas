@@ -66,6 +66,14 @@ else:
     st.warning("Selecione um intervalo válido de datas.")
     st.stop()
 
+st.sidebar.title("Tipo de Comparação")
+
+tipo_comparacao = st.sidebar.radio(
+    "Comparar com:",
+    ["Período anterior", "Mesmo período do ano anterior"]
+)
+
+
 # ================= APLICAÇÃO DOS FILTROS =================
 
 filtros = {
@@ -83,7 +91,8 @@ if df_filtrado.empty:
 receita_atual, receita_anterior, variacao_periodo = comparar_periodos(
     df,
     data_inicio,
-    data_fim
+    data_fim,
+    tipo=tipo_comparacao
 )
 
 # ================= TRANSFORMAÇÕES =================
@@ -131,6 +140,20 @@ meta_vendas = quantidade_vendas * 1.05
 delta_receita = receita_total - meta_receita
 delta_vendas = quantidade_vendas - meta_vendas
 
+# ================= TEXTO DINÂMICO KPI =================
+
+if tipo_comparacao == "Período anterior":
+    texto_comparacao = "vs período anterior"
+else:
+    texto_comparacao = "vs ano anterior"
+
+if variacao_periodo > 0:
+    indicador = "\U0001F53A"
+elif variacao_periodo < 0:
+    indicador = "\U0001F53B"
+else:
+    indicador = "\u2796"
+
 # ================= ABAS =================
 aba_receita, aba_vendedores, aba_analise, aba_dataset = st.tabs([
     "\U0001F4B0 Receita",
@@ -149,7 +172,7 @@ with aba_receita:
     col1.metric(
     "\U0001F4B0 Receita Total",
     format_number(receita_atual, prefix="R$ "),
-    delta=f"{variacao_periodo:.2f}% vs período anterior"
+    delta=f"{indicador} {variacao_periodo:.2f}% {texto_comparacao}"
     )
 
     col2.metric(
