@@ -47,6 +47,10 @@ df_filtrado = df.copy()
 if filtro_vendedor:
     df_filtrado = df_filtrado[df_filtrado['Vendedor'].isin(filtro_vendedor)]
 
+if df_filtrado.empty:
+    st.warning("Nenhum dado encontrado para o filtro selecionado.")
+    st.stop()
+
 # ================= TRANSFORMAÇÕES =================
 df_rec_estado = receita_por_estado(df)
 df_rec_mensal = receita_mensal(df)
