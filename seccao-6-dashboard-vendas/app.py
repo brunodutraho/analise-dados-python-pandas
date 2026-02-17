@@ -1,7 +1,7 @@
 import streamlit as st
 import pandas as pd
 import numpy as np
-from dataset import df
+from dataset import carregar_dados
 from utils import format_currency_full, format_number, load_all_css, format_date_br
 from transformacoes import (
     receita_por_estado,
@@ -33,6 +33,12 @@ st.set_page_config(
     page_icon="\U0001F4CA"
 )
 st.markdown(load_all_css(), unsafe_allow_html=True)
+# ===============================
+# CARREGAMENTO DE DADOS
+# ===============================
+
+df = carregar_dados()
+
 # ================= ESCONDER SIDEBAR SE NÃO AUTENTICADO =================
 if not st.session_state.get("autenticado", False):
     st.markdown("""
