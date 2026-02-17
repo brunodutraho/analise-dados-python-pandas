@@ -33,11 +33,6 @@ st.set_page_config(
     page_icon="\U0001F4CA"
 )
 st.markdown(load_all_css(), unsafe_allow_html=True)
-# ===============================
-# CARREGAMENTO DE DADOS
-# ===============================
-
-df = carregar_dados()
 
 # ================= ESCONDER SIDEBAR SE NÃO AUTENTICADO =================
 if not st.session_state.get("autenticado", False):
@@ -105,18 +100,20 @@ def tela_login():
         st.markdown("</div>", unsafe_allow_html=True)
 
 
-
-
 # Se não estiver autenticado, mostra login e para execução
 if not st.session_state.autenticado:
     tela_login()
     st.stop()
 logout()
 
+# ===============================
+# CARREGAMENTO DE DADOS
+# ===============================
 
+df = carregar_dados()
 
-st.title("\U0001F4CA Dashboard Executivo de Vendas")
-st.divider()
+st.markdown("<div class='main-title'>\U0001F4CA Dashboard Executivo de Vendas</div>", unsafe_allow_html=True)
+st.markdown("<div class='section-divider'></div>", unsafe_allow_html=True)
 
 if df.empty:
     st.warning("\U000026A0 Dataset vazio.")
@@ -252,7 +249,9 @@ aba_receita, aba_vendedores, aba_analise, aba_dataset = st.tabs([
 # ==========================================================
 with aba_receita:
 
+    st.markdown("<div class='kpi-container'>", unsafe_allow_html=True)
     col1, col2, col3, col4, col5 = st.columns(5)
+
 
     col1.metric(
     "\U0001F4B0 Receita Total",
@@ -281,6 +280,7 @@ with aba_receita:
         "\U0001F3C6 Estado Líder",
         estado_top
     )
+    st.markdown("</div>", unsafe_allow_html=True)
 
     # ===== CONCENTRAÇÃO TOP 5 =====
     concentracao_top5 = (
@@ -294,10 +294,11 @@ with aba_receita:
 
     st.divider()
 
+    st.markdown("<div class='chart-block'>", unsafe_allow_html=True)
     col6, col7 = st.columns(2)
 
     with col6:
-        st.subheader("\U0001F5FA Receita por Estado")
+        st.markdown("<div class='title-grafico'>\U0001F5FA Receita por Estado</div>", unsafe_allow_html=True)
         st.plotly_chart(
             grafico_receita_estado_mapa(df_rec_estado),
             use_container_width=True,
@@ -305,17 +306,19 @@ with aba_receita:
         )
 
     with col7:
-        st.subheader("\U0001F4C5 Receita Mensal")
+        st.markdown("<div class='title-grafico'>\U0001F4C5 Receita Mensal</div>", unsafe_allow_html=True)
         st.plotly_chart(
             grafico_receita_mensal(df_rec_mensal),
             use_container_width=True,
             key="grafico_receita_mensal"
         )
+    st.markdown("</div>", unsafe_allow_html=True)
 
+    st.markdown("<div class='chart-block'>", unsafe_allow_html=True)
     col8, col9 = st.columns(2)
 
     with col8:
-        st.subheader("\U0001F3C5 Top 5 Estados")
+        st.markdown("<div class='title-grafico'>\U0001F3C5 Top 5 Estados</div>", unsafe_allow_html=True)
         st.plotly_chart(
             grafico_barra_receita_estado(df_rec_estado),
             use_container_width=True,
@@ -323,12 +326,13 @@ with aba_receita:
         )
 
     with col9:
-        st.subheader("\U0001F4E6 Top 7 Categorias")
+        st.markdown("<div class='title-grafico'>\U0001F4E6 Top 7 Categorias</div>", unsafe_allow_html=True)
         st.plotly_chart(
             grafico_receita_categoria(df_rec_categoria),
             use_container_width=True,
             key="grafico_receita_categoria"
         )
+    st.markdown("</div>", unsafe_allow_html=True)
 
     # ===== TABELAS =====
     st.divider()
@@ -372,7 +376,7 @@ with aba_vendedores:
     col1, col2 = st.columns(2)
 
     with col1:
-        st.subheader("\U0001F4BC Receita por Vendedor")
+        st.markdown("<div class='title-grafico'>\U0001F4BC Receita por Vendedor</div>", unsafe_allow_html=True)
         st.plotly_chart(
             grafico_receita_vendedores(df_rec_vendedores),
             use_container_width=True,
@@ -380,14 +384,14 @@ with aba_vendedores:
         )
 
     with col2:
-        st.subheader("\U0001F4CA Vendas por Vendedor")
+        st.markdown("<div class='title-grafico'>\U0001F4CA Vendas por Vendedor</div>", unsafe_allow_html=True)
         st.plotly_chart(
             grafico_vendas_vendedores(df_vendas_vendedores),
             use_container_width=True,
             key="grafico_vendas_vendedores"
         )
 
-    st.subheader("\U0001F4C9 Curva de Pareto")
+    st.markdown("<div class='title-grafico'>\U0001F4C9 Curva de Pareto</div>", unsafe_allow_html=True)
     st.plotly_chart(
         grafico_pareto(df_pareto),
         use_container_width=True
@@ -410,8 +414,7 @@ with aba_vendedores:
 # ===================== ANÁLISES AVANÇADAS =================
 # ==========================================================
 with aba_analise:
-
-    st.subheader("\U0001F4CA Distribuição de Preços")
+    st.markdown("<div class='title-grafico'>\U0001F4CA Distribuição de Preços</div>", unsafe_allow_html=True)
     st.plotly_chart(
         grafico_histograma(df_filtrado),
         use_container_width=True
