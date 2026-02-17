@@ -2,7 +2,14 @@ import streamlit as st
 import pandas as pd
 import io
 from dataset import df
+from auth import verificar_login, logout
+from utils import format_currency_full, format_date_br
 
+# ==========================================================
+# CONDIÇÃO DE ACESSO
+# ==========================================================
+verificar_login()
+logout()
 
 # ==========================================================
 # CACHE
@@ -107,8 +114,9 @@ df_exibicao = df_filtrado[colunas]
 
 st.dataframe(
     df_exibicao.style.format({
-        "Preço": "R$ {:,.2f}",
-        "Frete": "R$ {:,.2f}"
+        "Preço": format_currency_full,
+        "Frete": format_currency_full,
+        "Data da Compra": format_date_br
     }),
     use_container_width=True,
     height=550
@@ -140,7 +148,7 @@ with col2:
         df_exibicao.to_excel(writer, index=False, sheet_name="Vendas")
 
     buffer.seek(0)
-
+    
     st.download_button(
         label="\U0001F4CA Baixar Excel",
         data=buffer,
@@ -148,3 +156,4 @@ with col2:
         mime="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
         use_container_width=True
     )
+
