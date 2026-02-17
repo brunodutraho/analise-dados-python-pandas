@@ -7,7 +7,7 @@
    FUNDO GERAL
 ===================================================== */
 
-html body .stApp {
+div.stApp {
     background: linear-gradient(
         135deg,
         #f8fafc 0%,
@@ -20,7 +20,7 @@ html body .stApp {
    AJUSTE DO CONTAINER PRINCIPAL
 ===================================================== */
 
-html body section.main > div.block-container {
+div.block-container {
     padding-top: 8vh !important;
     padding-bottom: 2rem !important;
 }
@@ -30,7 +30,7 @@ html body section.main > div.block-container {
    CARD DE LOGIN
 ===================================================== */
 
-html body section.main .login-card {
+div.login-card {
     background: #ffffff !important;
     padding: 3rem 2.5rem !important;
     border-radius: 16px !important;
@@ -45,7 +45,7 @@ html body section.main .login-card {
    TÍTULO
 ===================================================== */
 
-html body section.main .login-title {
+div.login-title {
     text-align: center !important;
     font-weight: 700 !important;
     font-size: 1.6rem !important;
@@ -57,8 +57,7 @@ html body section.main .login-title {
 /* =====================================================
    SUBTÍTULO
 ===================================================== */
-
-html body section.main .login-subtitle {
+div.login-subtitle {
     text-align: center !important;
     font-size: 0.9rem !important;
     color: #6b7280 !important;
@@ -70,7 +69,7 @@ html body section.main .login-subtitle {
    INPUTS (BaseWeb - Streamlit)
 ===================================================== */
 
-html body section.main div[data-baseweb="input"] {
+div[data-baseweb="input"] {
     border: 1px solid #e5e7eb !important;
     border-radius: 15px !important;
     box-shadow: none !important;
@@ -78,20 +77,20 @@ html body section.main div[data-baseweb="input"] {
 }
 
 /* Remove borda interna */
-html body section.main div[data-baseweb="input"] input {
+div[data-baseweb="input"] input {
     border: none !important;
     box-shadow: none !important;
     outline: none !important;
 }
 
 /* Foco no container */
-html body section.main div[data-baseweb="input"]:focus-within {
+div[data-baseweb="input"]:focus-within {
     border: 1px solid #1d4ed8 !important;
     box-shadow: 0 0 0 2px rgba(29, 78, 216, 0.1) !important;
 }
 
 /* Fundo suave ao focar */
-html body section.main div[data-baseweb="input"]:focus-within input {
+div[data-baseweb="input"]:focus-within input {
     background-color: #eff6ff !important;
 }
 
@@ -109,7 +108,7 @@ html body section.main [data-testid="InputInstructions"] {
    BOTÃO PRIMÁRIO (SaaS Style)
 ===================================================== */
 
-html body section.main button[kind="primary"] {
+button[kind="primary"] {
     background-color: #1d4ed8 !important;
     border-radius: 8px !important;
     height: 46px !important;
@@ -118,7 +117,7 @@ html body section.main button[kind="primary"] {
     transition: all 0.2s ease !important;
 }
 
-html body section.main button[kind="primary"]:hover {
+button[kind="primary"]:hover {
     background-color: #1e40af !important;
     transform: translateY(-1px) !important;
 }
@@ -128,7 +127,7 @@ html body section.main button[kind="primary"]:hover {
    BOTÃO SECONDARY FORM
 ===================================================== */
 
-html body section.main button[kind="secondaryFormSubmit"] {
+button[kind="secondaryFormSubmit"] {
     background-color: rgba(17, 76, 238, 0.78) !important;
     border-radius: 8px !important;
     height: 46px !important;
@@ -138,7 +137,7 @@ html body section.main button[kind="secondaryFormSubmit"] {
     transition: all 0.2s ease !important;
 }
 
-html body section.main button[kind="secondaryFormSubmit"]:hover {
+button[kind="secondaryFormSubmit"]:hover {
     background-color: rgb(17, 76, 238) !important;
     transform: translateY(-1px) !important;
 }
@@ -151,7 +150,7 @@ html body section.main button[kind="secondaryFormSubmit"]:hover {
 /* Tablet */
 @media (max-width: 1024px) {
 
-    html body section.main .login-card {
+    div.login-card {
         padding: 2.5rem 2rem !important;
     }
 
@@ -160,15 +159,15 @@ html body section.main button[kind="secondaryFormSubmit"]:hover {
 /* Mobile */
 @media (max-width: 768px) {
 
-    html body section.main > div.block-container {
+    div.block-container {
         padding-top: 4vh !important;
     }
 
-    html body section.main .login-card {
+    div.login-card {
         padding: 2rem 1.5rem !important;
     }
 
-    html body section.main .login-title {
+    div.login-title {
         font-size: 1.4rem !important;
     }
 
@@ -177,11 +176,11 @@ html body section.main button[kind="secondaryFormSubmit"]:hover {
 /* Mobile pequeno */
 @media (max-width: 480px) {
 
-    html body section.main .login-card {
+    div.login-card {
         padding: 1.5rem 1.2rem !important;
     }
 
-    html body section.main .login-title {
+    div.login-title {
         font-size: 1.25rem !important;
     }
 
