@@ -35,5 +35,5 @@ LIMITE_CONCENTRACAO_VENDEDOR = 0.35  # 35%
 # MENSAGENS PADRÃO
 # ===============================
 
-MSG_DATASET_VAZIO = "⚠️ Dataset vazio."
-MSG_SEM_DADOS_FILTRO = "⚠️ Sem dados para os filtros selecionados."
+MSG_DATASET_VAZIO = "\U000026A0 Dataset vazio."
+MSG_SEM_DADOS_FILTRO = "\U000026A0 Sem dados para os filtros selecionados."
