@@ -1,6 +1,5 @@
-import os
 from pathlib import Path
-
+import pandas as pd
 
 def load_all_css(folder_path: str = "styles") -> str:
     """
@@ -40,3 +39,15 @@ def format_number(value: float, prefix: str = "") -> str:
         .replace(".", ",")
         .replace("X", ".")
     )
+
+def format_currency_full(value: float, prefix: str = "R$ ") -> str:
+    return prefix + f"{value:,.2f}".replace(",", "X").replace(".", ",").replace("X", ".")
+
+def format_date_br(value) -> str:
+    """
+    Formata datetime para padrão brasileiro (dd/mm/yyyy)
+    sem exibir hora.
+    """
+    if pd.isna(value):
+        return ""
+    return value.strftime("%d/%m/%Y")
