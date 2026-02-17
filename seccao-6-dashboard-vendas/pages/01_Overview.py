@@ -2,7 +2,13 @@ import streamlit as st
 import pandas as pd
 import altair as alt
 from dataset import df
+from auth import verificar_login, logout
 
+# ==========================================================
+# CONDIÇÃO DE ACESSO
+# ==========================================================
+verificar_login()
+logout()
 
 # ==========================================================
 # CACHE
