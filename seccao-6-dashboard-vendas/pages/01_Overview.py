@@ -3,7 +3,9 @@ import pandas as pd
 import altair as alt
 from dataset import df
 from auth import verificar_login, logout
+from utils import load_all_css
 
+st.markdown(load_all_css(), unsafe_allow_html=True)
 # ==========================================================
 # CONDIÇÃO DE ACESSO
 # ==========================================================
