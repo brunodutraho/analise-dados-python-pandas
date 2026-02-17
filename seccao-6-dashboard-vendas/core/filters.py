@@ -55,21 +55,12 @@ def aplicar_filtros(df: pd.DataFrame, filtros: Dict[str, Any]) -> pd.DataFrame:
                 data_fim
             )
         ]
-
-   # Filtro por período
-    data_inicio = filtros.get("data_inicio")
-    data_fim = filtros.get("data_fim")
-
-    if data_inicio and data_fim:
+    
+    # Filtro por forma de pagamento
+    formas_pagamento = filtros.get("formas_pagamento")
+    if formas_pagamento:
         df_filtrado = df_filtrado[
-            df_filtrado["Data da Compra"].between(
-                data_inicio,
-                data_fim
-            )
+            df_filtrado["Tipo de pagamento"].isin(formas_pagamento)
         ]
-
-
-
-
 
     return df_filtrado
