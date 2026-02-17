@@ -1,31 +1,38 @@
 /* =====================================================
-   TABS - Abas customizadas
+   TABS RESPONSIVO
    ===================================================== */
 
-/* Botões base */
 button[data-baseweb="tab"] {
-    font-size: 17px;
-    padding: 10px 22px;
+    font-size: 16px;
+    padding: 10px 20px;
     border-radius: 10px;
     transition: all 0.2s ease-in-out;
     margin-bottom: 10px;
     background-color: var(--text-tertiary);
+    font-weight: 600 !important;
+    color: var(--text-primary) !important;
 }
 
-/* Força peso da fonte no conteúdo interno */
-button[data-baseweb="tab"] * {
-    font-weight: 700 !important;
-}
-
-/* Aba ativa */
 button[data-baseweb="tab"][aria-selected="true"] {
-    background-color: var(--primary-color);
-    color: white;
-    margin-bottom: 10px;
+    background-color: var(--primary-color) !important;
+    color: var(--card-background) !important;
 }
 
-/* Hover */
 button[data-baseweb="tab"]:hover {
-    background-color: var(--secondary-color);
-    color: white;
+    background-color: var(--secondary-color) !important;
+    color: var(--card-background) !important;
+}
+
+/* Mobile */
+@media (max-width: 768px) {
+
+    div[data-baseweb="tab-list"] {
+        display: flex;
+        flex-direction: column;
+    }
+
+    button[data-baseweb="tab"] {
+        width: 100%;
+        text-align: center;
+    }
 }
