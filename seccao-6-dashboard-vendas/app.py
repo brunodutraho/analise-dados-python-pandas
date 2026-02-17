@@ -2,7 +2,7 @@ import streamlit as st
 import pandas as pd
 import numpy as np
 from dataset import df
-from utils import format_number, load_all_css
+from utils import format_currency_full, format_number, load_all_css, format_date_br
 from transformacoes import (
     receita_por_estado,
     receita_mensal,
@@ -21,7 +21,10 @@ from graficos import (
     grafico_pareto,
     grafico_histograma,
 )
-from core.filters import aplicar_filtros
+from core.filters import aplicar_filtros 
+from auth import logout
+
+
 
 # ================= CONFIGURAÇÃO =================
 st.set_page_config(
@@ -29,8 +32,82 @@ st.set_page_config(
     layout="wide",
     page_icon="\U0001F4CA"
 )
-
 st.markdown(load_all_css(), unsafe_allow_html=True)
+# ================= ESCONDER SIDEBAR SE NÃO AUTENTICADO =================
+if not st.session_state.get("autenticado", False):
+    st.markdown("""
+        <style>
+            [data-testid="stSidebar"] {
+                display: none !important;
+            }
+        </style>
+    """, unsafe_allow_html=True)
+
+# ================= AUTENTICAÇÃO =================
+
+if "autenticado" not in st.session_state:
+    st.session_state.autenticado = False
+if "usuario" not in st.session_state:
+    st.session_state.usuario = None
+
+def tela_login():
+
+    col1, col2, col3 = st.columns([1, 1.5, 1])
+
+    with col2:
+
+        st.markdown(
+            "<div class='login-title'>Painel Análise de Vendas</div>",
+            unsafe_allow_html=True
+        )
+
+        st.markdown(
+            "<div class='login-subtitle'>Acesse sua central de indicadores estratégicos</div>",
+            unsafe_allow_html=True
+        )
+
+        USUARIOS = {
+            "admin": "1234",
+            "bruno": "abcd"
+        }
+
+        with st.form("form_login"):
+
+            usuario = st.text_input(
+                "Usuário",
+                placeholder="Usuário",
+                label_visibility="collapsed"
+            )
+
+            senha = st.text_input(
+                "Senha",
+                type="password",
+                placeholder="Senha",
+                label_visibility="collapsed"
+            )
+
+            submitted = st.form_submit_button("Entrar")
+
+        if submitted:
+            if usuario in USUARIOS and senha == USUARIOS[usuario]:
+                st.session_state.autenticado = True
+                st.session_state.usuario = usuario
+                st.rerun()
+            else:
+                st.error("Usuário ou senha inválidos.")
+
+        st.markdown("</div>", unsafe_allow_html=True)
+
+
+
+
+# Se não estiver autenticado, mostra login e para execução
+if not st.session_state.autenticado:
+    tela_login()
+    st.stop()
+logout()
+
+
 
 st.title("\U0001F4CA Dashboard Executivo de Vendas")
 st.divider()
@@ -41,15 +118,17 @@ if df.empty:
 
 # ================= FILTROS =================
 
-st.sidebar.title("Filtro de Vendedores")
+st.sidebar.title("Filtros Avançados")
 
 filtro_vendedor = st.sidebar.multiselect(
     "Vendedores",
     sorted(df["Vendedor"].dropna().unique()),
     default=[]
 )
-
-st.sidebar.title("Filtro de Período")
+formas_pagamento = st.sidebar.multiselect(
+    "Forma de Pagamento",
+    options=sorted(df["Tipo de pagamento"].unique())
+)
 
 data_min = df["Data da Compra"].min().date()
 data_max = df["Data da Compra"].max().date()
@@ -66,8 +145,6 @@ else:
     st.warning("Selecione um intervalo válido de datas.")
     st.stop()
 
-st.sidebar.title("Tipo de Comparação")
-
 tipo_comparacao = st.sidebar.radio(
     "Comparar com:",
     ["Período anterior", "Mesmo período do ano anterior"]
@@ -78,9 +155,11 @@ tipo_comparacao = st.sidebar.radio(
 
 filtros = {
     "vendedores": filtro_vendedor,
+    "formas_pagamento": formas_pagamento,
     "data_inicio": data_inicio,
     "data_fim": data_fim
 }
+
 
 df_filtrado = aplicar_filtros(df, filtros)
 
@@ -249,10 +328,18 @@ with aba_receita:
     st.divider()
 
     with st.expander("\U0001F4C4 Ver Tabela - Receita por Estado"):
-        st.dataframe(df_rec_estado, use_container_width=True)
+        st.dataframe(
+            df_rec_estado.style.format({
+                "Preço": format_currency_full
+            }),
+            use_container_width=True)
 
     with st.expander("\U0001F4C4 Ver Tabela - Receita por Categoria"):
-        st.dataframe(df_rec_categoria, use_container_width=True)
+        st.dataframe(
+            df_rec_categoria.style.format({
+                "Preço": format_currency_full
+            }),
+            use_container_width=True)
 
 # ==========================================================
 # ======================== VENDEDORES ======================
@@ -304,7 +391,11 @@ with aba_vendedores:
 
     with st.expander("\U0001F4C4 Ver Tabela - Performance Completa Vendedores"):
         st.dataframe(
-            df_perf.sort_values("Receita_Total", ascending=False),
+            df_perf
+                .sort_values("Receita_Total", ascending=False)
+                .style.format({
+                    "Receita_Total": format_currency_full
+                }),
             use_container_width=True,
             key="grafico_pareto"
         )
@@ -344,4 +435,8 @@ with aba_analise:
 with aba_dataset:
 
     st.subheader("\U0001F50D Visualização Completa do Dataset")
-    st.dataframe(df_filtrado, use_container_width=True)
+    st.dataframe(
+        df_filtrado.style.format({
+            "Preço": format_currency_full,
+            "Data da Compra": format_date_br
+        }), use_container_width=True)
