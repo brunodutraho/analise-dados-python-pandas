@@ -1,7 +1,7 @@
 import streamlit as st
 import pandas as pd
 import altair as alt
-from dataset import df
+from dataset import carregar_dados
 from auth import verificar_login, logout
 from utils import load_all_css
 
@@ -19,12 +19,18 @@ logout()
 def get_dataframe():
     return df.copy()
 
+# ===============================
+# CARREGAMENTO DE DADOS
+# ===============================
+
+df = carregar_dados()
 
 # ==========================================================
 # TÍTULO
 # ==========================================================
-st.title("\U0001F4CA Visão Geral de Vendas")
-st.divider()
+
+st.markdown("<div class='main-title'>\U0001F4CA Visão Geral de Vendas</div>", unsafe_allow_html=True)
+st.markdown("<div class='section-divider'></div>", unsafe_allow_html=True)
 
 df_base = get_dataframe()
 
@@ -57,7 +63,7 @@ st.divider()
 # ==========================================================
 # RECEITA POR CATEGORIA (COM ROTATE NO EIXO X)
 # ==========================================================
-st.subheader("\U0001F4E6 Receita por Categoria")
+st.markdown("<div class='title-grafico'>\U0001F4E6 Receita por Categoria</div>", unsafe_allow_html=True)
 
 receita_categoria = (
     df_base
@@ -83,7 +89,7 @@ st.divider()
 # ==========================================================
 # RECEITA MENSAL (COM ROTATE NO EIXO X)
 # ==========================================================
-st.subheader("\U0001F4C5 Receita Mensal")
+st.markdown("<div class='title-grafico'>\U0001F4C5 Receita Mensal</div>", unsafe_allow_html=True)
 
 df_tempo = df_base.copy()
 df_tempo["Mes"] = df_tempo["Data da Compra"].dt.to_period("M")
@@ -113,7 +119,7 @@ st.divider()
 # ==========================================================
 # TOP 5 PRODUTOS (COM ROTATE NO EIXO X)
 # ==========================================================
-st.subheader("\U0001F3C6 Top 5 Produtos por Receita")
+st.markdown("<div class='title-grafico'>\U0001F3C6 Top 5 Produtos por Receita</div>", unsafe_allow_html=True)
 
 top_produtos = (
     df_base
