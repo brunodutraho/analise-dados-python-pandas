@@ -4,7 +4,9 @@ import io
 from dataset import df
 from auth import verificar_login, logout
 from utils import format_currency_full, format_date_br
+from utils import load_all_css
 
+st.markdown(load_all_css(), unsafe_allow_html=True)
 # ==========================================================
 # CONDIÇÃO DE ACESSO
 # ==========================================================
