@@ -3,12 +3,12 @@
    ===================================================== */
 
 button[data-baseweb="tab"] {
-    font-size: 16px;
-    padding: 10px 20px;
-    border-radius: 10px;
-    transition: all 0.2s ease-in-out;
-    margin-bottom: 10px;
-    background-color: var(--text-tertiary);
+    font-size: 16px !important;
+    padding: 10px 20px !important;
+    border-radius: 10px !important;
+    transition: all 0.2s ease-in-out !important;
+    margin-bottom: 10px !important;
+    background-color: var(--text-tertiary) !important;
     font-weight: 600 !important;
     color: var(--text-primary) !important;
 }
@@ -27,12 +27,12 @@ button[data-baseweb="tab"]:hover {
 @media (max-width: 768px) {
 
     div[data-baseweb="tab-list"] {
-        display: flex;
-        flex-direction: column;
+        display: flex !important;
+        flex-direction: column !important;
     }
 
     button[data-baseweb="tab"] {
-        width: 100%;
-        text-align: center;
+        width: 100% !important;
+        text-align: center !important;
     }
 }

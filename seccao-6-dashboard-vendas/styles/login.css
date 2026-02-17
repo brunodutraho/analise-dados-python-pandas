@@ -1,6 +1,6 @@
 /* Remove excesso de padding */
 .block-container {
-    padding-top: 8vh;
+    padding-top: 8vh !important;
 }
 
 /* Fundo sofisticado claro */
@@ -9,35 +9,35 @@
         135deg,
         #f8fafc 0%,
         #eef2f7 100%
-    );
+    ) !important;
 }
 
 /* Card premium */
 .login-card {
-    background: #ffffff;
-    padding: 3rem 2.5rem;
-    border-radius: 16px;
+    background: #ffffff !important;
+    padding: 3rem 2.5rem !important;
+    border-radius: 16px !important;
     box-shadow:
         0 10px 25px rgba(0, 0, 0, 0.05),
-        0 5px 10px rgba(0, 0, 0, 0.03);
-    border: 1px solid #e5e7eb;
+        0 5px 10px rgba(0, 0, 0, 0.03) !important;
+    border: 1px solid #e5e7eb !important;
 }
 
 /* Título */
 .login-title {
-    text-align: center;
-    font-weight: 700;
-    font-size: 1.6rem;
-    color: #111827;
-    margin-bottom: 0.5rem;
+    text-align: center !important;
+    font-weight: 700 !important;
+    font-size: 1.6rem !important;
+    color: #111827 !important;
+    margin-bottom: 0.5rem !important;
 }
 
 /* Subtítulo */
 .login-subtitle {
-    text-align: center;
-    font-size: 0.9rem;
-    color: #6b7280;
-    margin-bottom: 2rem;
+    text-align: center !important;
+    font-size: 0.9rem !important;
+    color: #6b7280 !important;
+    margin-bottom: 2rem !important;
 }
 
 /* Inputs */
@@ -49,29 +49,29 @@ div[data-baseweb="input"] {
 button[kind="primary"] {
     background-color: #1d4ed8 !important;
     border-radius: 8px !important;
-    height: 46px;
+    height: 46px !important;
     font-weight: 600 !important;
     border: none !important;
-    transition: all 0.2s ease;
+    transition: all 0.2s ease !important;
 }
 
 button[kind="primary"]:hover {
     background-color: #1e40af !important;
-    transform: translateY(-1px);
+    transform: translateY(-1px) !important;
 }
 
 button[kind="secondaryFormSubmit"] {
     background-color: rgba(17, 76, 238, 0.781) !important;
     border-radius: 8px !important;
-    height: 46px;
+    height: 46px !important;
     font-weight: 600 !important;
     border: none !important;
-    transition: all 0.2s ease;
+    transition: all 0.2s ease !important;
     color: var(--card-background) !important;
 }
 button[kind="secondaryFormSubmit"]:hover {
-    filter: brightness(0.95);
-    transform: translateY(-1px);
+    filter: brightness(0.95) !important;
+    transform: translateY(-1px) !important;
     background-color: rgb(17, 76, 238) !important;
 }
 

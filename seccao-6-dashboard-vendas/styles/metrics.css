@@ -3,17 +3,17 @@ KPIs RESPONSIVOS
 ===================================================== */
 
 div[data-testid="stMetric"] {
-    background-color: var(--card-background);
-    padding: 22px;
-    border-radius: 16px;
-    border: 1px solid #E5E7EB;
-    box-shadow: 0px 6px 18px rgba(0, 0, 0, 0.05);
-    transition: all 0.2s ease-in-out;
+    background-color: var(--card-background) !important;
+    padding: 22px !important;
+    border-radius: 16px !important;
+    border: 1px solid #E5E7EB !important;
+    box-shadow: 0px 6px 18px rgba(0, 0, 0, 0.05) !important;
+    transition: all 0.2s ease-in-out !important;
 }
 
 div[data-testid="stMetric"]:hover {
-    transform: translateY(-3px);
-    box-shadow: 0px 10px 25px rgba(0, 0, 0, 0.08);
+    transform: translateY(-3px) !important;
+    box-shadow: 0px 10px 25px rgba(0, 0, 0, 0.08) !important;
 }
 
 div[data-testid="stMetricLabel"] {
