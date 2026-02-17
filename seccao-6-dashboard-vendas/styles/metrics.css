@@ -7,7 +7,7 @@
    CARD DO KPI
 ===================================================== */
 
-html body section.main div[data-testid="stMetric"] {
+div[data-testid="stMetric"] {
     background-color: var(--card-background, #ffffff) !important;
     padding: 22px !important;
     border-radius: 16px !important;
@@ -18,7 +18,7 @@ html body section.main div[data-testid="stMetric"] {
 
 
 /* Hover elegante */
-html body section.main div[data-testid="stMetric"]:hover {
+div[data-testid="stMetric"]:hover {
     transform: translateY(-3px) !important;
     box-shadow: 0px 12px 28px rgba(0, 0, 0, 0.08) !important;
 }
@@ -28,7 +28,7 @@ html body section.main div[data-testid="stMetric"]:hover {
    LABEL DO KPI
 ===================================================== */
 
-html body section.main div[data-testid="stMetricLabel"] {
+div[data-testid="stMetricLabel"] {
     font-size: 16px !important;
     font-weight: 600 !important;
     color: var(--text-secondary, #6B7280) !important;
@@ -40,7 +40,7 @@ html body section.main div[data-testid="stMetricLabel"] {
    VALOR DO KPI
 ===================================================== */
 
-html body section.main div[data-testid="stMetricValue"] {
+div[data-testid="stMetricValue"] {
     font-size: 30px !important;
     font-weight: 700 !important;
     color: var(--primary-color, #1d4ed8) !important;
@@ -52,7 +52,7 @@ html body section.main div[data-testid="stMetricValue"] {
    DELTA (CRESCIMENTO / QUEDA)
 ===================================================== */
 
-html body section.main div[data-testid="stMetricDelta"] {
+div[data-testid="stMetricDelta"] {
     font-size: 14px !important;
     font-weight: 600 !important;
     margin-top: 6px !important;
@@ -66,11 +66,11 @@ html body section.main div[data-testid="stMetricDelta"] {
 /* Tablet */
 @media (max-width: 1024px) {
 
-    html body section.main div[data-testid="stMetric"] {
+    div[data-testid="stMetric"] {
         padding: 18px !important;
     }
 
-    html body section.main div[data-testid="stMetricValue"] {
+    div[data-testid="stMetricValue"] {
         font-size: 26px !important;
     }
 
@@ -80,16 +80,16 @@ html body section.main div[data-testid="stMetricDelta"] {
 /* Mobile */
 @media (max-width: 768px) {
 
-    html body section.main div[data-testid="stMetric"] {
+    div[data-testid="stMetric"] {
         padding: 16px !important;
         margin-bottom: 12px !important;
     }
 
-    html body section.main div[data-testid="stMetricLabel"] {
+    div[data-testid="stMetricLabel"] {
         font-size: 14px !important;
     }
 
-    html body section.main div[data-testid="stMetricValue"] {
+    div[data-testid="stMetricValue"] {
         font-size: 22px !important;
     }
 
@@ -99,16 +99,16 @@ html body section.main div[data-testid="stMetricDelta"] {
 /* Mobile pequeno */
 @media (max-width: 480px) {
 
-    html body section.main div[data-testid="stMetric"] {
+    div[data-testid="stMetric"] {
         padding: 14px !important;
         border-radius: 14px !important;
     }
 
-    html body section.main div[data-testid="stMetricValue"] {
+    div[data-testid="stMetricValue"] {
         font-size: 20px !important;
     }
 
-    html body section.main div[data-testid="stMetricLabel"] {
+    div[data-testid="stMetricLabel"] {
         font-size: 13px !important;
     }
 

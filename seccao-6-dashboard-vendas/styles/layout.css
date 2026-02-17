@@ -13,12 +13,12 @@ Suporte:
    RESET E BASE
 ===================================================== */
 
-html body section.main,
-html body section.main * {
+
+section.main * {
     font-family: "Inter", sans-serif !important;
 }
 
-html body section.main {
+section.main {
     padding-top: 2rem !important;
     padding-bottom: 2rem !important;
 }
@@ -28,14 +28,14 @@ html body section.main {
    TÍTULO PRINCIPAL
 ===================================================== */
 
-html body section.main .main-title {
+.main-title {
     font-size: 2.2rem !important;
     font-weight: 700 !important;
     margin-bottom: 0.5rem !important;
     text-align: center !important;
 }
 
-html body section.main .section-divider {
+.section-divider {
     height: 1px !important;
     background: #2c2c2c !important;
     margin-bottom: 2rem !important;
@@ -46,14 +46,14 @@ html body section.main .section-divider {
    SIDEBAR
 ===================================================== */
 
-html body section[data-testid="stSidebar"] {
+section[data-testid="stSidebar"] {
     background-color: var(--card-background) !important;
     border-right: 1px solid #222 !important;
 }
 
-html body section[data-testid="stSidebar"] h1,
-html body section[data-testid="stSidebar"] h2,
-html body section[data-testid="stSidebar"] h3 {
+section[data-testid="stSidebar"] h1,
+section[data-testid="stSidebar"] h2,
+section[data-testid="stSidebar"] h3 {
     font-weight: 600 !important;
 }
 
@@ -62,19 +62,19 @@ html body section[data-testid="stSidebar"] h3 {
    KPIs
 ===================================================== */
 
-html body section.main div[data-testid="stMetric"] {
+div[data-testid="stMetric"] {
     background: rgba(255,255,255,0.03) !important;
     padding: 1rem !important;
     border-radius: 12px !important;
     border: 1px solid rgba(0,0,0,0.05) !important;
 }
 
-html body section.main div[data-testid="stMetricLabel"] {
+section.main div[data-testid="stMetricLabel"] {
     font-size: 0.85rem !important;
     font-weight: 600 !important;
 }
 
-html body section.main div[data-testid="stMetricValue"] {
+section.main div[data-testid="stMetricValue"] {
     font-size: 1.3rem !important;
     font-weight: 700 !important;
 }
@@ -84,7 +84,7 @@ html body section.main div[data-testid="stMetricValue"] {
    TÍTULO DOS GRÁFICOS
 ===================================================== */
 
-html body section.main div.title-grafico {
+div.title-grafico {
     font-size: 1.15rem !important;
     font-weight: 600 !important;
     margin-bottom: 0.8rem !important;
@@ -93,7 +93,7 @@ html body section.main div.title-grafico {
 }
 
 /* Espaçamento entre título e gráfico */
-html body section.main div.title-grafico + div[data-testid="stPlotlyChart"] {
+div.title-grafico + div[data-testid="stPlotlyChart"] {
     margin-bottom: 1.5rem !important;
 }
 
@@ -102,7 +102,7 @@ html body section.main div.title-grafico + div[data-testid="stPlotlyChart"] {
    BLOCOS DE GRÁFICOS (se usar)
 ===================================================== */
 
-html body section.main .chart-block {
+.chart-block {
     background: rgba(255,255,255,0.02) !important;
     padding: 1.5rem !important;
     border-radius: 16px !important;
@@ -115,13 +115,13 @@ html body section.main .chart-block {
    TABS
 ===================================================== */
 
-html body section.main button[role="tab"] {
+button[role="tab"] {
     font-weight: 600 !important;
     padding: 0.75rem 1.2rem !important;
     border-radius: 8px !important;
 }
 
-html body section.main button[role="tab"][aria-selected="true"] {
+button[role="tab"][aria-selected="true"] {
     background-color: rgba(0,0,0,0.08) !important;
 }
 
@@ -130,7 +130,7 @@ html body section.main button[role="tab"][aria-selected="true"] {
    DATAFRAME
 ===================================================== */
 
-html body section.main div[data-testid="stDataFrame"] {
+div[data-testid="stDataFrame"] {
     border-radius: 12px !important;
     overflow: hidden !important;
     border: 1px solid rgba(0,0,0,0.05) !important;
@@ -141,7 +141,7 @@ html body section.main div[data-testid="stDataFrame"] {
    EXPANDERS
 ===================================================== */
 
-html body section.main details {
+details {
     border-radius: 12px !important;
     border: 1px solid rgba(0,0,0,0.05) !important;
     padding: 0.5rem 1rem !important;
@@ -152,7 +152,7 @@ html body section.main details {
    BOTÕES
 ===================================================== */
 
-html body section.main button[kind="primary"] {
+button[kind="primary"] {
     border-radius: 8px !important;
     font-weight: 600 !important;
 }
@@ -162,14 +162,14 @@ html body section.main button[kind="primary"] {
    LOGIN
 ===================================================== */
 
-html body section.main .login-title {
+div.login-title {
     font-size: 1.8rem !important;
     font-weight: 700 !important;
     text-align: center !important;
     margin-bottom: 0.5rem !important;
 }
 
-html body section.main .login-subtitle {
+div.login-subtitle {
     text-align: center !important;
     font-size: 0.95rem !important;
     opacity: 0.8 !important;
@@ -181,7 +181,7 @@ html body section.main .login-subtitle {
    ALERTAS
 ===================================================== */
 
-html body section.main div[data-testid="stAlert"] {
+div[data-testid="stAlert"] {
     border-radius: 12px !important;
 }
 
@@ -190,8 +190,11 @@ html body section.main div[data-testid="stAlert"] {
    CAPTIONS
 ===================================================== */
 
-html body section.main caption,
-html body section.main .stCaption {
+caption{
+    font-size: 0.85rem !important;
+    opacity: 0.75 !important;
+}
+.stCaption {
     font-size: 0.85rem !important;
     opacity: 0.75 !important;
 }
@@ -204,11 +207,11 @@ html body section.main .stCaption {
 /* Tablets */
 @media (max-width: 1024px) {
 
-    html body section.main .main-title {
+    .main-title {
         font-size: 1.8rem !important;
     }
 
-    html body section.main .chart-block {
+    .chart-block {
         padding: 1rem !important;
     }
 }
@@ -217,25 +220,25 @@ html body section.main .stCaption {
 /* Mobile */
 @media (max-width: 768px) {
 
-    html body section.main .main-title {
+    .main-title {
         font-size: 1.5rem !important;
     }
 
-    html body section.main div[data-testid="stMetric"] {
+    div[data-testid="stMetric"] {
         padding: 0.6rem !important;
         margin-bottom: 0.5rem !important;
     }
 
-    html body section.main button[role="tab"] {
+    button[role="tab"] {
         padding: 0.5rem 0.8rem !important;
         font-size: 0.85rem !important;
     }
 
-    html body section[data-testid="stSidebar"] {
+    section[data-testid="stSidebar"] {
         width: 100% !important;
     }
 
-    html body section.main div.title-grafico {
+    div.title-grafico {
         font-size: 1rem !important;
     }
 }
@@ -244,23 +247,23 @@ html body section.main .stCaption {
 /* Mobile pequeno */
 @media (max-width: 480px) {
 
-    html body section.main .main-title {
+    div.main-title {
         font-size: 1.3rem !important;
     }
 
-    html body section.main div[data-testid="stMetricValue"] {
+    div[data-testid="stMetricValue"] {
         font-size: 1.05rem !important;
     }
 
-    html body section.main div[data-testid="stMetricLabel"] {
+    div[data-testid="stMetricLabel"] {
         font-size: 0.75rem !important;
     }
 
-    html body section.main div.chart-block {
+    div.chart-block {
         padding: 0.8rem !important;
     }
 
-    html body section.main div.title-grafico {
+    div.title-grafico {
         font-size: 0.95rem !important;
     }
 }

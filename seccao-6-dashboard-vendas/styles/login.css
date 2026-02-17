@@ -38,6 +38,7 @@ div.login-card {
     box-shadow:
         0 10px 25px rgba(0, 0, 0, 0.05),
         0 5px 10px rgba(0, 0, 0, 0.03) !important;
+    font-family: 'Segoe UI', 'Roboto', sans-serif !important;
 }
 
 
@@ -51,6 +52,7 @@ div.login-title {
     font-size: 1.6rem !important;
     color: #111827 !important;
     margin-bottom: 0.5rem !important;
+    font-family: 'Segoe UI', 'Roboto', sans-serif !important;
 }
 
 
@@ -62,6 +64,7 @@ div.login-subtitle {
     font-size: 0.9rem !important;
     color: #6b7280 !important;
     margin-bottom: 2rem !important;
+    font-family: 'Segoe UI', 'Roboto', sans-serif !important;
 }
 
 
@@ -74,6 +77,7 @@ div[data-baseweb="input"] {
     border-radius: 15px !important;
     box-shadow: none !important;
     transition: all 0.2s ease !important;
+    font-family: 'Segoe UI', 'Roboto', sans-serif !important;
 }
 
 /* Remove borda interna */
@@ -81,17 +85,20 @@ div[data-baseweb="input"] input {
     border: none !important;
     box-shadow: none !important;
     outline: none !important;
+    font-family: 'Segoe UI', 'Roboto', sans-serif !important;
 }
 
 /* Foco no container */
 div[data-baseweb="input"]:focus-within {
     border: 1px solid #1d4ed8 !important;
     box-shadow: 0 0 0 2px rgba(29, 78, 216, 0.1) !important;
+    font-family: 'Segoe UI', 'Roboto', sans-serif !important;
 }
 
 /* Fundo suave ao focar */
 div[data-baseweb="input"]:focus-within input {
     background-color: #eff6ff !important;
+    font-family: 'Segoe UI', 'Roboto', sans-serif !important;
 }
 
 
@@ -99,7 +106,7 @@ div[data-baseweb="input"]:focus-within input {
    REMOVE TEXTO AUXILIAR DOS INPUTS
 ===================================================== */
 
-html body section.main [data-testid="InputInstructions"] {
+section.main [data-testid="InputInstructions"] {
     display: none !important;
 }
 
@@ -115,6 +122,11 @@ button[kind="primary"] {
     font-weight: 600 !important;
     border: none !important;
     transition: all 0.2s ease !important;
+    font-family: 'Segoe UI', 'Roboto', sans-serif !important;
+}
+
+p {
+    font-family: 'Segoe UI', 'Roboto', sans-serif !important;
 }
 
 button[kind="primary"]:hover {
@@ -140,6 +152,7 @@ button[kind="secondaryFormSubmit"] {
 button[kind="secondaryFormSubmit"]:hover {
     background-color: rgb(17, 76, 238) !important;
     transform: translateY(-1px) !important;
+    font-family: 'Segoe UI', 'Roboto', sans-serif !important;
 }
 
 
@@ -152,6 +165,7 @@ button[kind="secondaryFormSubmit"]:hover {
 
     div.login-card {
         padding: 2.5rem 2rem !important;
+        font-family: 'Segoe UI', 'Roboto', sans-serif !important;
     }
 
 }
@@ -161,14 +175,17 @@ button[kind="secondaryFormSubmit"]:hover {
 
     div.block-container {
         padding-top: 4vh !important;
+        font-family: 'Segoe UI', 'Roboto', sans-serif !important;
     }
 
     div.login-card {
         padding: 2rem 1.5rem !important;
+        font-family: 'Segoe UI', 'Roboto', sans-serif !important;
     }
 
     div.login-title {
         font-size: 1.4rem !important;
+        font-family: 'Segoe UI', 'Roboto', sans-serif !important;
     }
 
 }
@@ -178,10 +195,12 @@ button[kind="secondaryFormSubmit"]:hover {
 
     div.login-card {
         padding: 1.5rem 1.2rem !important;
+        font-family: 'Segoe UI', 'Roboto', sans-serif !important;
     }
 
     div.login-title {
         font-size: 1.25rem !important;
+        font-family: 'Segoe UI', 'Roboto', sans-serif !important;
     }
 
 }
