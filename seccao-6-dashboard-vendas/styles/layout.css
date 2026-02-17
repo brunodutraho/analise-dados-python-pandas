@@ -8,15 +8,17 @@ Suporte:
 📽 Projetores
 ===================================================== */
 
+
 /* =====================================================
    RESET E BASE
 ===================================================== */
 
-html, body, [class*="css"]  {
+html body section.main,
+html body section.main * {
     font-family: "Inter", sans-serif !important;
 }
 
-section.main {
+html body section.main {
     padding-top: 2rem !important;
     padding-bottom: 2rem !important;
 }
@@ -26,16 +28,14 @@ section.main {
    TÍTULO PRINCIPAL
 ===================================================== */
 
-.main-title {
+html body section.main .main-title {
     font-size: 2.2rem !important;
     font-weight: 700 !important;
     margin-bottom: 0.5rem !important;
-    align-items: center !important;
-    justify-content: center !important;
     text-align: center !important;
 }
 
-.section-divider {
+html body section.main .section-divider {
     height: 1px !important;
     background: #2c2c2c !important;
     margin-bottom: 2rem !important;
@@ -46,14 +46,14 @@ section.main {
    SIDEBAR
 ===================================================== */
 
-section[data-testid="stSidebar"] {
+html body section[data-testid="stSidebar"] {
     background-color: var(--card-background) !important;
     border-right: 1px solid #222 !important;
 }
 
-section[data-testid="stSidebar"] h1,
-section[data-testid="stSidebar"] h2,
-section[data-testid="stSidebar"] h3 {
+html body section[data-testid="stSidebar"] h1,
+html body section[data-testid="stSidebar"] h2,
+html body section[data-testid="stSidebar"] h3 {
     font-weight: 600 !important;
 }
 
@@ -62,45 +62,52 @@ section[data-testid="stSidebar"] h3 {
    KPIs
 ===================================================== */
 
-.kpi-container {
-    background: rgba(255,255,255,0.02) !important;
-    padding: 1.5rem 1rem !important;
-    border-radius: 14px !important;
-    margin-bottom: 2rem !important;
-}
-
-div[data-testid="metric-container"] {
+html body section.main div[data-testid="stMetric"] {
     background: rgba(255,255,255,0.03) !important;
     padding: 1rem !important;
     border-radius: 12px !important;
-    border: 1px solid rgba(255,255,255,0.05) !important;
+    border: 1px solid rgba(0,0,0,0.05) !important;
 }
 
-div[data-testid="metric-container"] label {
+html body section.main div[data-testid="stMetricLabel"] {
     font-size: 0.85rem !important;
     font-weight: 600 !important;
 }
 
-div[data-testid="metric-container"] div {
+html body section.main div[data-testid="stMetricValue"] {
     font-size: 1.3rem !important;
     font-weight: 700 !important;
 }
 
 
 /* =====================================================
-   BLOCOS DE GRÁFICOS
+   TÍTULO DOS GRÁFICOS
 ===================================================== */
 
-.chart-block {
+html body section.main div.title-grafico {
+    font-size: 1.15rem !important;
+    font-weight: 600 !important;
+    margin-bottom: 0.8rem !important;
+    margin-top: 0.5rem !important;
+    letter-spacing: 0.3px !important;
+}
+
+/* Espaçamento entre título e gráfico */
+html body section.main div.title-grafico + div[data-testid="stPlotlyChart"] {
+    margin-bottom: 1.5rem !important;
+}
+
+
+/* =====================================================
+   BLOCOS DE GRÁFICOS (se usar)
+===================================================== */
+
+html body section.main .chart-block {
     background: rgba(255,255,255,0.02) !important;
     padding: 1.5rem !important;
     border-radius: 16px !important;
     margin-bottom: 2rem !important;
-    border: 1px solid rgba(255,255,255,0.05) !important;
-}
-
-.chart-block h3 {
-    margin-bottom: 1rem !important;
+    border: 1px solid rgba(0,0,0,0.05) !important;
 }
 
 
@@ -108,14 +115,14 @@ div[data-testid="metric-container"] div {
    TABS
 ===================================================== */
 
-button[role="tab"] {
+html body section.main button[role="tab"] {
     font-weight: 600 !important;
     padding: 0.75rem 1.2rem !important;
     border-radius: 8px !important;
 }
 
-button[role="tab"][aria-selected="true"] {
-    background-color: rgba(255,255,255,0.08) !important;
+html body section.main button[role="tab"][aria-selected="true"] {
+    background-color: rgba(0,0,0,0.08) !important;
 }
 
 
@@ -123,10 +130,10 @@ button[role="tab"][aria-selected="true"] {
    DATAFRAME
 ===================================================== */
 
-div[data-testid="stDataFrame"] {
+html body section.main div[data-testid="stDataFrame"] {
     border-radius: 12px !important;
     overflow: hidden !important;
-    border: 1px solid rgba(255,255,255,0.05) !important;
+    border: 1px solid rgba(0,0,0,0.05) !important;
 }
 
 
@@ -134,9 +141,9 @@ div[data-testid="stDataFrame"] {
    EXPANDERS
 ===================================================== */
 
-details {
+html body section.main details {
     border-radius: 12px !important;
-    border: 1px solid rgba(255,255,255,0.05) !important;
+    border: 1px solid rgba(0,0,0,0.05) !important;
     padding: 0.5rem 1rem !important;
 }
 
@@ -145,25 +152,24 @@ details {
    BOTÕES
 ===================================================== */
 
-button[kind="primary"] {
+html body section.main button[kind="primary"] {
     border-radius: 8px !important;
     font-weight: 600 !important;
 }
 
 
 /* =====================================================
-   LOGIN (caso esteja usando login.css separado,
-   pode manter lá — mas aqui está versão compatível)
+   LOGIN
 ===================================================== */
 
-.login-title {
+html body section.main .login-title {
     font-size: 1.8rem !important;
     font-weight: 700 !important;
     text-align: center !important;
     margin-bottom: 0.5rem !important;
 }
 
-.login-subtitle {
+html body section.main .login-subtitle {
     text-align: center !important;
     font-size: 0.95rem !important;
     opacity: 0.8 !important;
@@ -175,7 +181,7 @@ button[kind="primary"] {
    ALERTAS
 ===================================================== */
 
-div[data-testid="stAlert"] {
+html body section.main div[data-testid="stAlert"] {
     border-radius: 12px !important;
 }
 
@@ -184,145 +190,90 @@ div[data-testid="stAlert"] {
    CAPTIONS
 ===================================================== */
 
-caption, .stCaption {
+html body section.main caption,
+html body section.main .stCaption {
     font-size: 0.85rem !important;
     opacity: 0.75 !important;
 }
+
 
 /* =====================================================
    RESPONSIVIDADE
 ===================================================== */
 
-/* =============================
-   Tablets (até 1024px)
-============================= */
+/* Tablets */
 @media (max-width: 1024px) {
 
-    .main-title {
+    html body section.main .main-title {
         font-size: 1.8rem !important;
     }
 
-    .kpi-container {
+    html body section.main .chart-block {
         padding: 1rem !important;
     }
-
-    div[data-testid="metric-container"] {
-        padding: 0.8rem !important;
-    }
-
-    .chart-block {
-        padding: 1rem !important;
-    }
-
 }
 
 
-/* =============================
-   Mobile (até 768px)
-============================= */
+/* Mobile */
 @media (max-width: 768px) {
 
-    /* Título menor */
-    .main-title {
+    html body section.main .main-title {
         font-size: 1.5rem !important;
-        text-align: center !important;
     }
 
-    /* KPIs mais compactos */
-    .kpi-container {
-        padding: 0.8rem !important;
-    }
-
-    div[data-testid="metric-container"] {
+    html body section.main div[data-testid="stMetric"] {
         padding: 0.6rem !important;
         margin-bottom: 0.5rem !important;
     }
 
-    /* Tabs menores */
-    button[role="tab"] {
+    html body section.main button[role="tab"] {
         padding: 0.5rem 0.8rem !important;
         font-size: 0.85rem !important;
     }
 
-    /* Sidebar ocupa tela inteira no mobile */
-    section[data-testid="stSidebar"] {
+    html body section[data-testid="stSidebar"] {
         width: 100% !important;
     }
 
-    .title-grafico > span {
-        font-size: 2rem !important;
+    html body section.main div.title-grafico {
+        font-size: 1rem !important;
     }
-
-
 }
 
 
-/* =============================
-   Mobile pequeno (até 480px)
-============================= */
+/* Mobile pequeno */
 @media (max-width: 480px) {
 
-    .main-title {
+    html body section.main .main-title {
         font-size: 1.3rem !important;
     }
 
-    div[data-testid="metric-container"] div {
+    html body section.main div[data-testid="stMetricValue"] {
         font-size: 1.05rem !important;
     }
 
-    div[data-testid="metric-container"] label {
+    html body section.main div[data-testid="stMetricLabel"] {
         font-size: 0.75rem !important;
     }
 
-    .chart-block {
+    html body section.main div.chart-block {
         padding: 0.8rem !important;
     }
 
-    .title-grafico > span {
-        font-size: 1.5rem !important;
-        margin-bottom: 1rem !important;
+    html body section.main div.title-grafico {
+        font-size: 0.95rem !important;
     }
-
 }
-/* =============================
-   Mobile pequeno (até 375px)
-============================= */
+
+
+/* Extra pequeno */
 @media (max-width: 375px) {
 
-    .main-title {
+    html body section.main .main-title {
         font-size: 1.2rem !important;
     }
 
-    div[data-testid="metric-container"] div {
-        font-size: 1.05rem !important;
+    html body section.main div.title-grafico {
+        font-size: 0.9rem !important;
     }
-
-    div[data-testid="metric-container"] label {
-        font-size: 0.75rem !important;
-    }
-
-    .chart-block {
-        padding: 0.8rem !important;
-    }
-
-    .title-grafico > span {
-        font-size: 2rem !important;
-        margin-bottom: 1rem !important;
-    }
-
-    .title-grafico {
-    font-size: 1.15rem !important;
-    font-weight: 600 !important;
-    margin-bottom: 0.8rem !important;
-    margin-top: 0.5rem !important;
-    letter-spacing: 0.3px !important;
-    }
-
-    /* Espaçamento entre título e gráfico */
-    .title-grafico + div[data-testid="stPlotlyChart"] {
-        margin-bottom: 1.5rem !important;
-        font-size: 1rem !important;
-    }
-
-
 }

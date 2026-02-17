@@ -1,10 +1,13 @@
-/* Remove excesso de padding */
-.block-container {
-    padding-top: 8vh !important;
-}
+/* =====================================================
+   LOGIN - ESTILO PREMIUM ESTÁVEL
+===================================================== */
 
-/* Fundo sofisticado claro */
-.stApp {
+
+/* =====================================================
+   FUNDO GERAL
+===================================================== */
+
+html body .stApp {
     background: linear-gradient(
         135deg,
         #f8fafc 0%,
@@ -12,19 +15,37 @@
     ) !important;
 }
 
-/* Card premium */
-.login-card {
+
+/* =====================================================
+   AJUSTE DO CONTAINER PRINCIPAL
+===================================================== */
+
+html body section.main > div.block-container {
+    padding-top: 8vh !important;
+    padding-bottom: 2rem !important;
+}
+
+
+/* =====================================================
+   CARD DE LOGIN
+===================================================== */
+
+html body section.main .login-card {
     background: #ffffff !important;
     padding: 3rem 2.5rem !important;
     border-radius: 16px !important;
+    border: 1px solid #e5e7eb !important;
     box-shadow:
         0 10px 25px rgba(0, 0, 0, 0.05),
         0 5px 10px rgba(0, 0, 0, 0.03) !important;
-    border: 1px solid #e5e7eb !important;
 }
 
-/* Título */
-.login-title {
+
+/* =====================================================
+   TÍTULO
+===================================================== */
+
+html body section.main .login-title {
     text-align: center !important;
     font-weight: 700 !important;
     font-size: 1.6rem !important;
@@ -32,21 +53,63 @@
     margin-bottom: 0.5rem !important;
 }
 
-/* Subtítulo */
-.login-subtitle {
+
+/* =====================================================
+   SUBTÍTULO
+===================================================== */
+
+html body section.main .login-subtitle {
     text-align: center !important;
     font-size: 0.9rem !important;
     color: #6b7280 !important;
     margin-bottom: 2rem !important;
 }
 
-/* Inputs */
-div[data-baseweb="input"] {
-    border-radius: 8px !important;
+
+/* =====================================================
+   INPUTS (BaseWeb - Streamlit)
+===================================================== */
+
+html body section.main div[data-baseweb="input"] {
+    border: 1px solid #e5e7eb !important;
+    border-radius: 15px !important;
+    box-shadow: none !important;
+    transition: all 0.2s ease !important;
 }
 
-/* Botão primário estilo SaaS */
-button[kind="primary"] {
+/* Remove borda interna */
+html body section.main div[data-baseweb="input"] input {
+    border: none !important;
+    box-shadow: none !important;
+    outline: none !important;
+}
+
+/* Foco no container */
+html body section.main div[data-baseweb="input"]:focus-within {
+    border: 1px solid #1d4ed8 !important;
+    box-shadow: 0 0 0 2px rgba(29, 78, 216, 0.1) !important;
+}
+
+/* Fundo suave ao focar */
+html body section.main div[data-baseweb="input"]:focus-within input {
+    background-color: #eff6ff !important;
+}
+
+
+/* =====================================================
+   REMOVE TEXTO AUXILIAR DOS INPUTS
+===================================================== */
+
+html body section.main [data-testid="InputInstructions"] {
+    display: none !important;
+}
+
+
+/* =====================================================
+   BOTÃO PRIMÁRIO (SaaS Style)
+===================================================== */
+
+html body section.main button[kind="primary"] {
     background-color: #1d4ed8 !important;
     border-radius: 8px !important;
     height: 46px !important;
@@ -55,58 +118,71 @@ button[kind="primary"] {
     transition: all 0.2s ease !important;
 }
 
-button[kind="primary"]:hover {
+html body section.main button[kind="primary"]:hover {
     background-color: #1e40af !important;
     transform: translateY(-1px) !important;
 }
 
-button[kind="secondaryFormSubmit"] {
-    background-color: rgba(17, 76, 238, 0.781) !important;
+
+/* =====================================================
+   BOTÃO SECONDARY FORM
+===================================================== */
+
+html body section.main button[kind="secondaryFormSubmit"] {
+    background-color: rgba(17, 76, 238, 0.78) !important;
     border-radius: 8px !important;
     height: 46px !important;
     font-weight: 600 !important;
     border: none !important;
+    color: #ffffff !important;
     transition: all 0.2s ease !important;
-    color: var(--card-background) !important;
 }
-button[kind="secondaryFormSubmit"]:hover {
-    filter: brightness(0.95) !important;
-    transform: translateY(-1px) !important;
+
+html body section.main button[kind="secondaryFormSubmit"]:hover {
     background-color: rgb(17, 76, 238) !important;
+    transform: translateY(-1px) !important;
 }
 
 
-/* Remove qualquer instrução do input dentro de form */
-[data-testid="InputInstructions"] {
-    visibility: hidden !important;
-    height: 0 !important;
-    margin: 0 !important;
+/* =====================================================
+   RESPONSIVIDADE
+===================================================== */
+
+/* Tablet */
+@media (max-width: 1024px) {
+
+    html body section.main .login-card {
+        padding: 2.5rem 2rem !important;
+    }
+
 }
 
-/* Remove borda duplicada do container externo */
-div[data-baseweb="input"] {
-    border: 1px solid #e5e7eb !important;
-    border-radius: 15px !important;
-    box-shadow: none !important;
+/* Mobile */
+@media (max-width: 768px) {
+
+    html body section.main > div.block-container {
+        padding-top: 4vh !important;
+    }
+
+    html body section.main .login-card {
+        padding: 2rem 1.5rem !important;
+    }
+
+    html body section.main .login-title {
+        font-size: 1.4rem !important;
+    }
+
 }
 
-/* Remove borda interna do input */
-div[data-baseweb="input"] input {
-    border: none !important;
-    box-shadow: none !important;
-    outline: none !important;
+/* Mobile pequeno */
+@media (max-width: 480px) {
+
+    html body section.main .login-card {
+        padding: 1.5rem 1.2rem !important;
+    }
+
+    html body section.main .login-title {
+        font-size: 1.25rem !important;
+    }
+
 }
-
-/* Remove qualquer efeito ao focar */
-div[data-baseweb="input"]:focus-within {
-    border: 1px solid #e5e7eb !important;
-    border-radius: 15px !important ;
-    box-shadow: none !important;
-}
-
-/* Background ao selecionar */
-div[data-baseweb="input"]:focus-within input {
-    background-color: #eff6ff !important;  /* azul suave */
-}
-
-

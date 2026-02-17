@@ -1,38 +1,106 @@
 /* =====================================================
-   TABS RESPONSIVO
-   ===================================================== */
+   TABS RESPONSIVO - VERSÃO ESTÁVEL
+===================================================== */
 
-button[data-baseweb="tab"] {
+
+/* =====================================================
+   LISTA DE TABS
+===================================================== */
+
+html body section.main div[data-baseweb="tab-list"] {
+    gap: 8px !important;
+    margin-bottom: 15px !important;
+}
+
+
+/* =====================================================
+   BOTÃO TAB PADRÃO
+===================================================== */
+
+html body section.main button[data-baseweb="tab"] {
     font-size: 16px !important;
     padding: 10px 20px !important;
     border-radius: 10px !important;
     transition: all 0.2s ease-in-out !important;
-    margin-bottom: 10px !important;
-    background-color: var(--text-tertiary) !important;
     font-weight: 600 !important;
-    color: var(--text-primary) !important;
+    background-color: var(--text-tertiary, #f3f4f6) !important;
+    color: var(--text-primary, #111827) !important;
+    border: none !important;
 }
 
-button[data-baseweb="tab"][aria-selected="true"] {
-    background-color: var(--primary-color) !important;
-    color: var(--card-background) !important;
+
+/* =====================================================
+   TAB ATIVA
+===================================================== */
+
+html body section.main button[data-baseweb="tab"][aria-selected="true"] {
+    background-color: var(--primary-color, #1d4ed8) !important;
+    color: var(--card-background, #ffffff) !important;
+    box-shadow: 0px 6px 18px rgba(0, 0, 0, 0.08) !important;
 }
 
-button[data-baseweb="tab"]:hover {
-    background-color: var(--secondary-color) !important;
-    color: var(--card-background) !important;
+
+/* =====================================================
+   HOVER
+===================================================== */
+
+html body section.main button[data-baseweb="tab"]:hover {
+    background-color: var(--secondary-color, #2563eb) !important;
+    color: var(--card-background, #ffffff) !important;
+    transform: translateY(-1px) !important;
 }
+
+
+/* =====================================================
+   FOCO ACESSIBILIDADE
+===================================================== */
+
+html body section.main button[data-baseweb="tab"]:focus-visible {
+    outline: 2px solid var(--primary-color, #1d4ed8) !important;
+    outline-offset: 2px !important;
+}
+
+
+/* =====================================================
+   RESPONSIVIDADE
+===================================================== */
+
+/* Tablet */
+@media (max-width: 1024px) {
+
+    html body section.main button[data-baseweb="tab"] {
+        font-size: 15px !important;
+        padding: 9px 18px !important;
+    }
+
+}
+
 
 /* Mobile */
 @media (max-width: 768px) {
 
-    div[data-baseweb="tab-list"] {
+    html body section.main div[data-baseweb="tab-list"] {
         display: flex !important;
         flex-direction: column !important;
     }
 
-    button[data-baseweb="tab"] {
+    html body section.main button[data-baseweb="tab"] {
         width: 100% !important;
         text-align: center !important;
+        font-size: 14px !important;
+        padding: 10px !important;
     }
+
+}
+
+
+/* Mobile pequeno */
+@media (max-width: 480px) {
+
+    html body section.main button[data-baseweb="tab"] {
+        font-size: 13px !important;
+        padding: 8px !important;
+        border-radius: 8px !important;
+    }
+
 }

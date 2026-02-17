@@ -97,8 +97,6 @@ def tela_login():
             else:
                 st.error("Usuário ou senha inválidos.")
 
-        st.markdown("</div>", unsafe_allow_html=True)
-
 
 # Se não estiver autenticado, mostra login e para execução
 if not st.session_state.autenticado:
@@ -249,7 +247,7 @@ aba_receita, aba_vendedores, aba_analise, aba_dataset = st.tabs([
 # ==========================================================
 with aba_receita:
 
-    st.markdown("<div class='kpi-container'>", unsafe_allow_html=True)
+    st.markdown("<div class='kpi-container'></div>", unsafe_allow_html=True)
     col1, col2, col3, col4, col5 = st.columns(5)
 
 
@@ -280,7 +278,6 @@ with aba_receita:
         "\U0001F3C6 Estado Líder",
         estado_top
     )
-    st.markdown("</div>", unsafe_allow_html=True)
 
     # ===== CONCENTRAÇÃO TOP 5 =====
     concentracao_top5 = (
@@ -294,7 +291,6 @@ with aba_receita:
 
     st.divider()
 
-    st.markdown("<div class='chart-block'>", unsafe_allow_html=True)
     col6, col7 = st.columns(2)
 
     with col6:
@@ -312,9 +308,7 @@ with aba_receita:
             use_container_width=True,
             key="grafico_receita_mensal"
         )
-    st.markdown("</div>", unsafe_allow_html=True)
 
-    st.markdown("<div class='chart-block'>", unsafe_allow_html=True)
     col8, col9 = st.columns(2)
 
     with col8:
@@ -332,7 +326,6 @@ with aba_receita:
             use_container_width=True,
             key="grafico_receita_categoria"
         )
-    st.markdown("</div>", unsafe_allow_html=True)
 
     # ===== TABELAS =====
     st.divider()

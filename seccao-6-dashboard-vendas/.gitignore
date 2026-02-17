@@ -37,14 +37,13 @@ pip-delete-this-directory.txt
 .DS_Store
 
 # Streamlit
-.streamlit/
+.streamlit/secrets.toml
 .streamlit_cache/
 .streamlit_cache2/
 
 # Dados sensíveis
 .env
 .env.local
-secrets.toml
 
 # Logs
 *.log

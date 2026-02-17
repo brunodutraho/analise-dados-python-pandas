@@ -1,17 +1,16 @@
+import os
 from pathlib import Path
 import pandas as pd
 
 def load_all_css(folder_path: str = "styles") -> str:
-    """
-    Carrega todos os arquivos .css de uma pasta e retorna
-    como string HTML <style>.
-    """
-    css = ""
-    path = Path(folder_path)
+    
+    base_path = Path(__file__).parent
+    path = base_path / folder_path
 
     if not path.exists():
-        return ""
+        return f"<!-- Pasta {path} não encontrada -->"
 
+    css = ""
     for file in sorted(path.glob("*.css")):
         css += file.read_text(encoding="utf-8")
 
