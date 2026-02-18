@@ -328,7 +328,7 @@ Indicadores calculados dinamicamente:
 - Quantidade de Pedidos
 - Ticket Médio
 
-![KPIs do Dashboard](seccao-6-dashboard-vendas/assets/gifs/kpis.gif)
+![KPIs do Dashboard](seccao-6-dashboard-vendas/assets/kpis.gif)
 
 ---
 
@@ -340,7 +340,7 @@ Gráfico temporal construído com Plotly, permitindo:
 - Análise sazonal
 - Interatividade e zoom
 
-![Receita Mensal](seccao-6-dashboard-vendas/assets/gifs/receita_mensal.gif)
+![Receita Mensal](seccao-6-dashboard-vendas/assets/receita_mensal.gif)
 
 ---
 
@@ -348,7 +348,7 @@ Gráfico temporal construído com Plotly, permitindo:
 
 Segmentação dos dados para identificação de padrões e oportunidades.
 
-![Análise por Categoria](seccao-6-dashboard-vendas/assets/gifs/analise_categoria.gif)
+![Análise por Categoria](seccao-6-dashboard-vendas/assets/analise_categoria.gif)
 
 ---
 
@@ -359,7 +359,7 @@ Segmentação dos dados para identificação de padrões e oportunidades.
 - Exportação para Excel
 - Estrutura organizada para exploração analítica
 
-![Exploração do Dataset](seccao-6-dashboard-vendas/assets/gifs/dataset.gif)
+![Exploração do Dataset](seccao-6-dashboard-vendas/assets/dataset.gif)
 
 ---
 
