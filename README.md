@@ -2,7 +2,7 @@
 
 Repositório dedicado ao meu desenvolvimento prático e progressivo em **Análise de Dados**, aplicando Python em cenários estruturados que simulam desafios reais de negócio.
 
-Este projeto representa minha consolidação profissional como **Analista de Dados**, com foco em organização, clareza analítica, aplicação estatística e construção de soluções interativas.
+Este projeto representa minha consolidação prática em Análise de Dados, com foco em aplicação real, organização profissional e construção de soluções orientadas a métricas de negócio.
 
 ---
 
@@ -55,6 +55,19 @@ Ao longo das seções, aplico:
 - SQL / SQLAlchemy
 - Jupyter Notebook
 - Git & GitHub
+
+---
+
+## 📌 Destaques Técnicos do Projeto
+
+✔ Estrutura modular organizada por domínio  
+✔ Integração entre análise, banco de dados e aplicação  
+✔ Deploy em ambiente real (Streamlit Cloud)  
+✔ Implementação de autenticação simulada  
+✔ Uso de ORM (SQLAlchemy)  
+✔ CRUD completo em SQLite, PostgreSQL e MongoDB  
+✔ Separação entre camada de persistência e interface  
+✔ Commits semânticos e evolução progressiva  
 
 ---
 
@@ -424,50 +437,118 @@ Esta seção marca a transição de análises isoladas para **aplicações anal�
 
 ---
 
-# 🚧 Próximas Etapas (Roadmap Técnico)
+# 🗄️ Seção 7 – Persistência de Dados e Integração com Aplicações
 
-A próxima fase do repositório será focada em aprofundar a integração entre análise de dados e infraestrutura.
+Esta seção representa a transição da manipulação de dados em memória para a construção de uma camada estruturada de persistência, integrando bancos relacionais, NoSQL e aplicações reais.
 
-### 🔜 Planejamento:
-
-- 🗄️ Integração com bancos de dados relacionais (PostgreSQL)
-- 🌐 Integração com bancos NoSQL (MongoDB)
-- 🔄 Conexão entre Streamlit e banco de dados em tempo real
-- 🧪 Validação estatística aplicada a cenários reais
-- 📊 Projetos completos com datasets empresariais
-- 🚀 Expansão do dashboard para arquitetura mais robusta
-
-O objetivo é evoluir de análises isoladas para **soluções analíticas integradas e escaláveis**.
+O foco foi compreender, implementar e organizar operações completas de CRUD em diferentes tecnologias, aplicando boas práticas de arquitetura e separação de responsabilidades.
 
 ---
 
-# 🧩 Organização e Boas Práticas Aplicadas
+## 🔧 Tecnologias Utilizadas
 
-Este repositório segue princípios de organização profissional:
-
-- Estrutura modular por seções temáticas
-- Commits semânticos e progressivos
-- Separação clara entre dados, scripts e visualizações
-- Uso de `Pathlib` para portabilidade entre ambientes
-- Padronização de encoding (`utf-8`)
-- Tratamento consistente de dados numéricos e textuais
-- Estrutura preparada para deploy
-- Código legível, organizado e escalável
+- SQLite  
+- PostgreSQL  
+- MongoDB  
+- SQLAlchemy (ORM)  
+- Psycopg2  
+- Streamlit  
+- Tkinter  
+- Python  
 
 ---
 
-# 🚀 Considerações Finais
+## 📌 Banco Relacional – SQLite
 
-Este repositório representa minha evolução estruturada em Análise de Dados, com foco em:
+Implementação completa de CRUD com:
 
-- Clareza analítica  
-- Organização profissional  
-- Aplicação prática  
-- Comunicação de insights  
-- Construção de soluções publicáveis  
+- Estrutura inicial de conexão
+- Criação de tabela
+- Inserção de dados
+- Leitura estruturada
+- Atualização de registros
+- Exclusão de dados
+- Refatoração para funções reutilizáveis
+- Integração com formulário via Streamlit
 
-Ele será continuamente expandido à medida que avanço em projetos mais complexos e integrações com dados reais.
+**Objetivo:** consolidar fundamentos de modelagem relacional e persistência local.
 
 ---
 
-📌 *Projeto em evolução constante — cada seção representa um novo nível de maturidade técnica e responsabilidade analítica.*
+## 🐘 PostgreSQL – Integração Profissional
+
+Evolução da persistência para ambiente mais próximo de produção:
+
+- Criação de função `get_connection` reutilizável
+- Uso de `dotenv` para gerenciamento seguro de credenciais
+- Inserção, leitura, atualização e exclusão de dados
+- Retorno estruturado de consultas
+- Separação clara entre camada de conexão e regras de negócio
+
+**Objetivo:** simular cenário real de backend com banco relacional robusto.
+
+---
+
+## 🧩 ORM com SQLAlchemy
+
+Implementação de camada de abstração com:
+
+- Mapeamento objeto-relacional
+- Manipulação de dados via modelos Python
+- Operações CRUD utilizando ORM
+- Comparação prática entre SQL puro e abstração via ORM
+
+**Objetivo:** compreender quando utilizar SQL direto e quando utilizar abstração orientada a objetos.
+
+---
+
+## 📄 MongoDB – Banco NoSQL
+
+Exploração de banco orientado a documentos com:
+
+- Inserção de documentos (`insert_one`)
+- Listagem com cursor (`find`)
+- Atualização parcial com `$set`
+- Exclusão com `delete_one`
+- Manipulação de documentos estruturados
+- Diferença prática entre schema fixo e flexível
+
+**Objetivo:** entender cenários onde NoSQL é mais adequado que modelo relacional.
+
+---
+
+## 🖥️ Integração com Aplicações
+
+A persistência foi conectada a aplicações reais:
+
+### 🌐 Aplicação Web (Streamlit)
+- Formulário para cadastro
+- Listagem dinâmica de registros
+- Integração direta com banco
+
+### 🖥️ Aplicação Desktop (Tkinter)
+- Interface gráfica para gerenciamento de dados
+- Comunicação com camada de persistência
+
+**Objetivo:** conectar backend de dados com interface de usuário, simulando arquitetura de aplicação real.
+
+---
+
+## 🧠 Conceitos Técnicos Consolidados
+
+- Modelagem relacional  
+- CRUD completo em múltiplos bancos  
+- Diferença entre SQL e NoSQL  
+- ORM vs SQL puro  
+- Separação de responsabilidades  
+- Organização modular de projeto  
+- Persistência estruturada  
+- Integração entre camada de aplicação e banco  
+
+---
+
+## 🎯 Evolução Técnica Representada Nesta Seção
+
+Esta etapa marca a transição de análises isoladas para construção de sistemas com persistência estruturada, aproximando o projeto de um cenário real de backend e engenharia de dados.
+
+A partir desta seção, o projeto evolui de análises isoladas para construção de sistemas com persistência estruturada, aproximando-se de um cenário real de backend e engenharia de dados.
